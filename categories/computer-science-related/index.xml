@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Computer Science Related - Category - </title>
+        <link>http://ittosei.com/categories/computer-science-related/</link>
+        <description>Computer Science Related - Category - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Jun 2020 10:43:18 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/computer-science-related/" rel="self" type="application/rss+xml" /><item>
+    <title>Manjaro I3 Shortcut Cheatsheet</title>
+    <link>http://ittosei.com/posts/i3-help/</link>
+    <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/i3-help/</guid>
+    <description><![CDATA[Note  This is a cheatsheet that came along with the installation of Manjaro i3wm. I ported the PDF version to this Markdown format.
+From the signature, the original author is oberon.
+It is tedious for me to open helper PDF every time and resize it to my preference.
+I hope this will help you navigating in the i3.
+   Welcome to manjaro i3! The default mod-key is &lt;Super&gt; (Windows-key).]]></description>
+</item><item>
+    <title>Raspberry Pi Camera Module Documentation</title>
+    <link>http://ittosei.com/posts/pi-cam-doc/</link>
+    <pubDate>Sun, 14 Jun 2020 11:33:09 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/pi-cam-doc/</guid>
+    <description><![CDATA[An archive of Raspberry Pi camera module documentation]]></description>
+</item><item>
+    <title>Setting Up Wireguard VPN in Raspberry Pi</title>
+    <link>http://ittosei.com/posts/pivpn/</link>
+    <pubDate>Mon, 08 Jun 2020 01:40:12 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/pivpn/</guid>
+    <description><![CDATA[<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>This tutorial will help you setting up a Wireguard VPN on Raspberry Pi by using PiVPN installer. This article will use Raspberry Pi OS (Raspbian) for installation. The <a href="https://www.pivpn.io" target="_blank" rel="noopener noreffer">PiVPN</a> site claims the installer will also work on Debian and Ubuntu.</p>
+<p>I choose <strong>Wireguard</strong> over <strong>OpenVPN</strong> due to the convenience of connecting though QR code. In <strong>OpenVPN</strong>, you have to transfer security key via USB stick and some extra works to transfer it to a phone. However <strong>OpenVPN</strong> has the option with more encryption bits, but more encryption bits will cost more to compute and slow the transfer time. You can find out more in the <a href="https://www.pivpn.io" target="_blank" rel="noopener noreffer">PiVPN</a> website.</p>
+<p>I assume my audience have little background knowledge, so hope you can follow this without any problem. <strong>But I do not assume that you know how to type in the terminal.</strong></p>]]></description>
+</item><item>
+    <title>Python Script for Namesilo DDNS</title>
+    <link>http://ittosei.com/posts/namesilo-ddns/</link>
+    <pubDate>Sun, 07 Jun 2020 19:09:00 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/namesilo-ddns/</guid>
+    <description><![CDATA[Alternative DDNS of NOIP]]></description>
+</item></channel>
+</rss>

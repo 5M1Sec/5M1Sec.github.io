@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Raspberry Pi Camera Module Documentation - </title><meta name="Description" content="An archive of Raspberry Pi camera module documentation"><meta property="og:title" content="Raspberry Pi Camera Module Documentation" />
+<meta property="og:description" content="An archive of Raspberry Pi camera module documentation" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ittosei.com/posts/pi-cam-doc/" />
+<meta property="article:published_time" content="2020-06-14T11:33:09-04:00" />
+<meta property="article:modified_time" content="2020-06-14T11:33:09-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Raspberry Pi Camera Module Documentation"/>
+<meta name="twitter:description" content="An archive of Raspberry Pi camera module documentation"/>
+<meta name="application-name" content="Ittosei Blog">
+<meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-cam-doc/" /><link rel="prev" href="http://ittosei.com/posts/pivpn/" /><link rel="next" href="http://ittosei.com/posts/i3-help/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Raspberry Pi Camera Module Documentation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/ittosei.com\/posts\/pi-cam-doc\/"
+        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Web-Archive","wordcount":  5472 ,
+        "url": "http:\/\/ittosei.com\/posts\/pi-cam-doc\/","datePublished": "2020-06-14T11:33:09-04:00","dateModified": "2020-06-14T11:33:09-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "5M1Sec"},"author": {
+                "@type": "Person",
+                "name": "5M1Sec"
+            },"description": "An archive of Raspberry Pi camera module documentation"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title=""><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title=""><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Pi Camera Module Documentation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/web-archive/"><i class="far fa-folder fa-fw"></i>Web-Archive</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry-Pi</a>&nbsp;<a href="/categories/computer-science-related/"><i class="far fa-folder fa-fw"></i>Computer Science Related</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-14">2020-06-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5472 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;26 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-up">Setting up</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#common-command-line-options">Common command line options</a>
+      <ul>
+        <li><a href="#preview-window">Preview window</a></li>
+        <li><a href="#camera-control-options">Camera control options</a></li>
+      </ul>
+    </li>
+    <li><a href="#application-specific-settings">Application-specific settings</a>
+      <ul>
+        <li><a href="#raspistill">raspistill</a></li>
+        <li><a href="#raspiyuv">raspiyuv</a></li>
+        <li><a href="#raspivid">raspivid</a></li>
+      </ul>
+    </li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#still-captures">Still captures</a></li>
+        <li><a href="#video-captures">Video captures</a></li>
+      </ul>
+    </li>
+    <li><a href="#shell-error-codes">Shell error codes</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This is an archived version from the <a href="https://www.raspberrypi.org/documentation/raspbian/applications/camera.md" target="_blank" rel="noopener noreffer">Raspberry documentation</a> website. It is convenient for me with a table of content, thus I post it here.<br>
+This article is licensed under a Creative Commons Attribution 4.0 International Licence.</div>
+        </div>
+    </div>
+<h1 id="raspberry-pi-camera-module">Raspberry Pi Camera Module</h1>
+<p>This document describes the use of the four Raspberry Pi camera applications, as of 30 April 2020.</p>
+<p>There are four applications provided: <code>raspistill</code>, <code>raspivid</code>, <code>raspiyuv</code> and <code>raspividyuv</code>. <code>raspistill</code> and <code>raspiyuv</code> are very similar and are intended for capturing images; <code>raspivid</code> and <code>raspvidyuv</code> are for capturing video.</p>
+<p>All the applications are driven from the command line, and written to take advantage of the MMAL API which runs over OpenMAX. The MMAL API provides an easier to use system than that presented by OpenMAX. Note that MMAL is a Broadcom-specific API used only on VideoCore 4 systems.</p>
+<p>The applications use up to four OpenMAX (MMAL) components: camera, preview, encoder, and null_sink. All applications use the camera component; <code>raspistill</code> uses the Image Encode component; <code>raspivid</code> uses the Video Encode component; and <code>raspiyuv</code> and <code>raspividyuv</code> don&rsquo;t use an encoder, and sends their YUV or RGB output directly from the camera component to file.</p>
+<p>The preview display is optional, but can be used full-screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to &lsquo;absorb&rsquo; the preview frames. The camera must produce preview frames even if these aren&rsquo;t required for display, as they&rsquo;re used for calculating exposure and white balance settings.</p>
+<p>In addition, it&rsquo;s possible to omit the filename option (in which case the preview is displayed but no file is written), or to redirect all output to stdout.</p>
+<p>Command line help is available by typing just the application name in the command line.</p>
+<h2 id="setting-up">Setting up</h2>
+<p>See <a href="../../configuration/camera.md" rel="">Camera Setup</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If the Camera Module isn&rsquo;t working correctly, there are number of things to try:</p>
+<ul>
+<li>
+<p>Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.</p>
+</li>
+<li>
+<p>Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.</p>
+</li>
+<li>
+<p>Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don&rsquo;t force it; if it doesn&rsquo;t engage, it&rsquo;s probably slightly misaligned.</p>
+</li>
+<li>
+<p>Have <code>sudo apt update</code> and <code>sudo apt full-upgrade</code> been run?</p>
+</li>
+<li>
+<p>Has <code>raspi-config</code> been run and the Camera Module enabled?</p>
+</li>
+<li>
+<p>Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.</p>
+</li>
+</ul>
+<p>If things are still not working, try the following:</p>
+<ul>
+<li>
+<p><code>Error : raspistill/raspivid command not found</code>. This probably means your update/upgrade failed in some way. Try it again.</p>
+</li>
+<li>
+<p><code>Error : ENOMEM</code>. The Camera Module is not starting up. Check all connections again.</p>
+</li>
+<li>
+<p><code>Error : ENOSPC</code>. The Camera Module is probably running out of GPU memory. Check <code>config.txt</code> in the /boot/ folder. The <code>gpu_mem</code> option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of <code>raspi-config</code> to set this.</p>
+</li>
+<li>
+<p>If you&rsquo;ve checked all the above issues and the Camera Module is still not working, try posting on our forums for more help.</p>
+</li>
+</ul>
+<h2 id="common-command-line-options">Common command line options</h2>
+<h3 id="preview-window">Preview window</h3>
+<pre><code>	--preview,	-p		Preview window settings &lt;'x,y,w,h'&gt;
+</code></pre><p>Allows the user to define the size of the preview window and its location on the screen. Note this will be superimposed over the top of any other windows/graphics.</p>
+<pre><code>	--fullscreen,	-f		Fullscreen preview mode
+</code></pre><p>Forces the preview window to use the whole screen. Note that the aspect ratio of the incoming image will be retained, so there may be bars on some edges.</p>
+<pre><code>	--nopreview,	-n		Do not display a preview window
+</code></pre><p>Disables the preview window completely. Note that even though the preview is disabled, the camera will still be producing frames, so will be using power.</p>
+<pre><code>	--opacity,	-op		Set preview window opacity
+</code></pre><p>Sets the opacity of the preview windows. 0 = invisible, 255 = fully opaque.</p>
+<h3 id="camera-control-options">Camera control options</h3>
+<pre><code>	--sharpness,	-sh		Set image sharpness (-100 - 100)
+</code></pre><p>Sets the sharpness of the image. 0 is the default.</p>
+<pre><code>	--contrast,	-co		Set image contrast (-100 - 100)
+</code></pre><p>Sets the contrast of the image. 0 is the default.</p>
+<pre><code>	--brightness,	-br		Set image brightness (0 - 100)
+</code></pre><p>Sets the brightness of the image. 50 is the default. 0 is black, 100 is white.</p>
+<pre><code>	--saturation,	-sa		Set image saturation (-100 - 100)
+</code></pre><p>Sets the colour saturation of the image. 0 is the default.</p>
+<pre><code>	--ISO,	-ISO		Set capture ISO (100 - 800)
+</code></pre><p>Sets the ISO to be used for captures.</p>
+<pre><code>	--vstab,	-vs		Turn on video stabilisation
+</code></pre><p>In video mode only, turns on video stabilisation.</p>
+<pre><code>	--ev,	-ev		Set EV compensation (-10 - 10)
+</code></pre><p>Sets the EV compensation of the image. Default is 0.</p>
+<pre><code>	--exposure,	-ex		Set exposure mode
+</code></pre><p>Possible options are:</p>
+<ul>
+<li>auto: use automatic exposure mode</li>
+<li>night: select setting for night shooting</li>
+<li>nightpreview:</li>
+<li>backlight: select setting for backlit subject</li>
+<li>spotlight:</li>
+<li>sports: select setting for sports (fast shutter etc.)</li>
+<li>snow: select setting optimised for snowy scenery</li>
+<li>beach: select setting optimised for beach</li>
+<li>verylong: select setting for long exposures</li>
+<li>fixedfps: constrain fps to a fixed value</li>
+<li>antishake: antishake mode</li>
+<li>fireworks: select setting optimised for fireworks</li>
+</ul>
+<p>Note that not all of these settings may be implemented, depending on camera tuning.</p>
+<pre><code>	--flicker, -fli		Set flicker avoidance mode
+</code></pre><p>Set a mode to compensate for lights flickering at the mains frequency, which can be seen as a dark horizontal band across an image. Flicker avoidance locks the exposure time to a multiple of the mains flicker frequency (8.33ms for 60Hz, or 10ms for 50Hz). This means that images can be noisier as the control algorithm has to increase the gain instead of exposure time should it wish for an intermediate exposure value. <code>auto</code> can be confused by external factors, therefore it is preferable to leave this setting off unless actually required.</p>
+<p>Possible options are:</p>
+<ul>
+<li>off: turn off flicker avoidance</li>
+<li>auto: automatically detect mains frequency</li>
+<li>50hz: set avoidance at 50Hz</li>
+<li>60hz: set avoidance at 60Hz</li>
+</ul>
+<pre><code>	--awb,	-awb		Set Automatic White Balance (AWB) mode
+</code></pre><p>Modes for which colour temperature ranges (K) are available have these settings in brackets.</p>
+<ul>
+<li>off: turn off white balance calculation</li>
+<li>auto: automatic mode (default)</li>
+<li>sun: sunny mode (between 5000K and 6500K)</li>
+<li>cloud: cloudy mode (between 6500K and 12000K)</li>
+<li>shade: shade mode</li>
+<li>tungsten: tungsten lighting mode (between 2500K and 3500K)</li>
+<li>fluorescent: fluorescent lighting mode (between 2500K and 4500K)</li>
+<li>incandescent: incandescent lighting mode</li>
+<li>flash: flash mode</li>
+<li>horizon: horizon mode</li>
+<li>greyworld: Use this on the NoIR camera to fix incorrect AWB results due to the lack of the IR filter.</li>
+</ul>
+<p>Note that not all of these settings may be implemented, depending on camera type.</p>
+<pre><code>	--imxfx,	-ifx		Set image effect
+</code></pre><p>Set an effect to be applied to the image:</p>
+<ul>
+<li>none: no effect (default)</li>
+<li>negative: invert the image colours</li>
+<li>solarise: solarise the image</li>
+<li>posterise: posterise the image</li>
+<li>whiteboard: whiteboard effect</li>
+<li>blackboard: blackboard effect</li>
+<li>sketch: sketch effect</li>
+<li>denoise: denoise the image</li>
+<li>emboss: emboss the image</li>
+<li>oilpaint: oil paint effect</li>
+<li>hatch: hatch sketch effect</li>
+<li>gpen: graphite sketch effect</li>
+<li>pastel: pastel effect</li>
+<li>watercolour: watercolour effect</li>
+<li>film: film grain effect</li>
+<li>blur: blur the image</li>
+<li>saturation: colour saturate the image</li>
+<li>colourswap: not fully implemented</li>
+<li>washedout: not fully implemented</li>
+<li>colourpoint: not fully implemented</li>
+<li>colourbalance: not fully implemented</li>
+<li>cartoon: not fully implemented</li>
+</ul>
+<p>Note that not all of these settings may be available in all circumstances.</p>
+<pre><code>	--colfx,	-cfx		Set colour effect &lt;U:V&gt;
+</code></pre><p>The supplied U and V parameters (range 0 - 255) are applied to the U and Y channels of the image. For example, &ndash;colfx 128:128 should result in a monochrome image.</p>
+<pre><code>	--metering,	-mm		Set metering mode
+</code></pre><p>Specify the metering mode used for the preview and capture:</p>
+<ul>
+<li>average: average the whole frame for metering</li>
+<li>spot: spot metering</li>
+<li>backlit: assume a backlit image</li>
+<li>matrix: matrix metering</li>
+</ul>
+<pre><code>	--rotation,	-rot		Set image rotation (0 - 359)
+</code></pre><p>Sets the rotation of the image in the viewfinder and resulting image. This can take any value from 0 upwards, but due to hardware constraints only 0, 90, 180, and 270 degree rotations are supported.</p>
+<pre><code>	--hflip,	-hf		Set horizontal flip
+</code></pre><p>Flips the preview and saved image horizontally.</p>
+<pre><code>	--vflip,	-vf		Set vertical flip
+</code></pre><p>Flips the preview and saved image vertically.</p>
+<pre><code>	--roi,	-roi		Set sensor region of interest
+</code></pre><p>Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top-left corner, and a width and height, with all values in normalised coordinates (0.0 - 1.0). So, to set a ROI at halfway across and down the sensor, and a width and height of a quarter of the sensor, use:</p>
+<pre><code>-roi 0.5,0.5,0.25,0.25		
+</code></pre><pre><code>	--shutter,	-ss		Set shutter speed/time
+</code></pre><p>Sets the shutter open time to the specified value (in microseconds). Shutter speed limits are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Camera Version</th>
+<th align="center">Max (microseconds)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1 (OV5647)</td>
+<td align="center">6000000 (i.e. 6s)</td>
+</tr>
+<tr>
+<td>V2 (IMX219)</td>
+<td align="center">10000000 (i.e. 10s)</td>
+</tr>
+<tr>
+<td>HQ (IMX477)</td>
+<td align="center">200000000 (i.e. 200s)</td>
+</tr>
+</tbody>
+</table>
+<p>Using values above these maximums will result in undefined behaviour.</p>
+<pre><code>	--drc,	-drc		Enable/disable dynamic range compression
+</code></pre><p>DRC changes the images by increasing the range of dark areas, and decreasing the brighter areas. This can improve the image in low light areas.</p>
+<ul>
+<li>off</li>
+<li>low</li>
+<li>med</li>
+<li>high</li>
+</ul>
+<p>By default, DRC is off.</p>
+<pre><code>	--stats,	-st		Use stills capture frame for image statistics
+</code></pre><p>Force recomputation of statistics on stills capture pass. Digital gain and AWB are recomputed based on the actual capture frame statistics, rather than the preceding preview frame.</p>
+<pre><code>	--awbgains,	-awbg
+</code></pre><p>Sets blue and red gains (as floating point numbers) to be applied when <code>-awb -off</code> is set e.g. -awbg 1.5,1.2</p>
+<pre><code>	--analoggain,	-ag
+</code></pre><p>Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on Camera Module V2 and the IMX447 on the HQ Camera).</p>
+<pre><code>	--digitalgain,	-dg
+</code></pre><p>Sets the digital gain value applied by the ISP (floating point value from 1.0 to 64.0, but values over about 4.0 will produce overexposed images)</p>
+<pre><code>	--mode,	-md
+</code></pre><p>Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used:</p>
+<p>Version 1.x (OV5647)</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Size</th>
+<th>Aspect Ratio</th>
+<th>Frame rates</th>
+<th>FOV</th>
+<th>Binning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>automatic selection</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1920x1080</td>
+<td>16:9</td>
+<td>1-30fps</td>
+<td>Partial</td>
+<td>None</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2592x1944</td>
+<td>4:3</td>
+<td>1-15fps</td>
+<td>Full</td>
+<td>None</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2592x1944</td>
+<td>4:3</td>
+<td>0.1666-1fps</td>
+<td>Full</td>
+<td>None</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1296x972</td>
+<td>4:3</td>
+<td>1-42fps</td>
+<td>Full</td>
+<td>2x2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1296x730</td>
+<td>16:9</td>
+<td>1-49fps</td>
+<td>Full</td>
+<td>2x2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>640x480</td>
+<td>4:3</td>
+<td>42.1-60fps</td>
+<td>Full</td>
+<td>2x2 plus skip</td>
+</tr>
+<tr>
+<td>7</td>
+<td>640x480</td>
+<td>4:3</td>
+<td>60.1-90fps</td>
+<td>Full</td>
+<td>2x2 plus skip</td>
+</tr>
+</tbody>
+</table>
+<p>Version 2.x (IMX219)</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Size</th>
+<th>Aspect Ratio</th>
+<th>Frame rates</th>
+<th>FOV</th>
+<th>Binning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>automatic selection</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1920x1080</td>
+<td>16:9</td>
+<td>0.1-30fps</td>
+<td>Partial</td>
+<td>None</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3280x2464</td>
+<td>4:3</td>
+<td>0.1-15fps</td>
+<td>Full</td>
+<td>None</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3280x2464</td>
+<td>4:3</td>
+<td>0.1-15fps</td>
+<td>Full</td>
+<td>None</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1640x1232</td>
+<td>4:3</td>
+<td>0.1-40fps</td>
+<td>Full</td>
+<td>2x2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1640x922</td>
+<td>16:9</td>
+<td>0.1-40fps</td>
+<td>Full</td>
+<td>2x2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1280x720</td>
+<td>16:9</td>
+<td>40-90fps</td>
+<td>Partial</td>
+<td>2x2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>640x480</td>
+<td>4:3</td>
+<td>40-200fps<!-- raw HTML omitted -->1<!-- raw HTML omitted --></td>
+<td>Partial</td>
+<td>2x2</td>
+</tr>
+</tbody>
+</table>
+<p><!-- raw HTML omitted -->1<!-- raw HTML omitted -->For frame rates over 120fps, it is necessary to turn off automatic exposure and gain control using <code>-ex off</code>. Doing so should achieve the higher frame rates, but exposure time and gains will need to be set to fixed values supplied by the user.</p>
+<p>HQ Camera</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Size</th>
+<th>Aspect Ratio</th>
+<th>Frame rates</th>
+<th>FOV</th>
+<th>Binning/Scaling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>automatic selection</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2028x1080</td>
+<td>169:90</td>
+<td>0.1-50fps</td>
+<td>Partial</td>
+<td>2x2 binned</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2028x1520</td>
+<td>4:3</td>
+<td>0.1-50fps</td>
+<td>Full</td>
+<td>2x2 binned</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4056x3040</td>
+<td>4:3</td>
+<td>0.005-10fps</td>
+<td>Full</td>
+<td>None</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1012x760</td>
+<td>4:3</td>
+<td>50.1-120fps</td>
+<td>Full</td>
+<td>4x4 Scaled</td>
+</tr>
+</tbody>
+</table>
+<pre><code>	--camselect,	-cs
+</code></pre><p>Selects which camera to use on a multi-camera system. Use 0 or 1.</p>
+<pre><code>	--annotate,	-a		Enable/set annotate flags or text
+</code></pre><p>Adds some text and/or metadata to the picture.</p>
+<p>Metadata is indicated using a bitmask notation, so add them together to show multiple parameters. For example, 12 will show time(4) and date(8), since 4+8=12.</p>
+<p>Text may include date/time placeholders by using the &lsquo;%&rsquo; character, as used by <!-- raw HTML omitted -->strftime<!-- raw HTML omitted -->.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Example Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a 4</td>
+<td>Time</td>
+<td>20:09:33</td>
+</tr>
+<tr>
+<td>-a 8</td>
+<td>Date</td>
+<td>10/28/15</td>
+</tr>
+<tr>
+<td>-a 12</td>
+<td>4+8=12 Show the date(4) and time(8)</td>
+<td>20:09:33 10/28/15</td>
+</tr>
+<tr>
+<td>-a 16</td>
+<td>Shutter Settings</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 32</td>
+<td>CAF Settings</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 64</td>
+<td>Gain Settings</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 128</td>
+<td>Lens Settings</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 256</td>
+<td>Motion Settings</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 512</td>
+<td>Frame Number</td>
+<td></td>
+</tr>
+<tr>
+<td>-a 1024</td>
+<td>Black Background</td>
+<td></td>
+</tr>
+<tr>
+<td>-a &ldquo;ABC %Y-%m-%d %X&rdquo;</td>
+<td>Show some text</td>
+<td>ABC %Y-%m-%d %X</td>
+</tr>
+<tr>
+<td>-a 4 -a &ldquo;ABC %Y-%m-%d %X&rdquo;</td>
+<td>Show custom <!-- raw HTML omitted -->formatted<!-- raw HTML omitted --> date/time</td>
+<td>ABC 2015-10-28 20:09:33</td>
+</tr>
+<tr>
+<td>-a 8 -a &ldquo;ABC %Y-%m-%d %X&rdquo;</td>
+<td>Show custom <!-- raw HTML omitted -->formatted<!-- raw HTML omitted --> date/time</td>
+<td>ABC 2015-10-28 20:09:33</td>
+</tr>
+</tbody>
+</table>
+<pre><code>	--annotateex,	-ae		Set extra annotation parameters
+</code></pre><p>Specifies annotation size, text colour, and background colour. Colours are in hex YUV format.</p>
+<p>Size ranges from 6 - 160; default is 32. Asking for an invalid size should give you the default.</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-ae 32,0xff,0x808000 -a &ldquo;Annotation text&rdquo;</td>
+<td>gives size 32 white text on black background</td>
+</tr>
+<tr>
+<td>-ae 10,0x00,0x8080FF -a &ldquo;Annotation text&rdquo;</td>
+<td>gives size 10 black text on white background</td>
+</tr>
+</tbody>
+</table>
+<pre><code>	--stereo,	-3d
+</code></pre><p>Select the specified stereo imaging mode; <code>sbs</code> selects side-by-side mode, <code>tb</code> selects top/bottom mode; <code>off</code> turns off stereo mode (the default).</p>
+<pre><code>	--decimate,	-dec
+</code></pre><p>Halves the width and height of the stereo image.</p>
+<pre><code>	--3dswap,	-3dswap
+</code></pre><p>Swaps the camera order used in stereoscopic imaging; NOTE: currently not working.</p>
+<pre><code>	--settings,	-set
+</code></pre><p>Retrieves the current camera settings and writes them to stdout.</p>
+<h2 id="application-specific-settings">Application-specific settings</h2>
+<h3 id="raspistill">raspistill</h3>
+<pre><code>	--width,	-w		Set image width &lt;size&gt;
+
+	--height,	-h		Set image height &lt;size&gt;
+
+	--quality,	-q		Set JPEG quality &lt;0 to 100&gt;
+</code></pre><p>Quality 100 is almost completely uncompressed. 75 is a good all-round value.</p>
+<pre><code>	--raw,	-r		Add raw Bayer data to JPEG metadata
+</code></pre><p>This option inserts the raw Bayer data from the camera into the JPEG metadata.</p>
+<pre><code>	--output,	-o		Output filename &lt;filename&gt;
+</code></pre><p>Specifies the output filename. If not specified, no file is saved. If the filename is &lsquo;-&rsquo;, then all output is sent to stdout.</p>
+<pre><code>	--latest,	-l		Link latest frame to filename &lt;filename&gt;
+</code></pre><p>Makes a file system link under this name to the latest frame.</p>
+<pre><code>	--verbose,	-v		Output verbose information during run
+</code></pre><p>Outputs debugging/information messages during the program run.</p>
+<pre><code>	--timeout,	-t		Time before the camera takes picture and shuts down
+</code></pre><p>The program will run for the specified length of time, entered in milliseconds. It then takes the capture and saves it if an output is specified. If a timeout value is not specified, then it is set to 5 seconds (-t 5000). Note that low values (less than 500ms, although it can depend on other settings) may not give enough time for the camera to start up and provide enough frames for the automatic algorithms like AWB and AGC to provide accurate results.</p>
+<p>If set to 0, the preview will run indefinitely, until stopped with CTRL-C. In this case no capture is made.</p>
+<pre><code>	--timelapse,	-tl		time-lapse mode
+</code></pre><p>The specific value is the time between shots in milliseconds. Note that you should specify <code>%04d</code> at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named <code>image0001.jpg</code>, <code>image0002.jpg</code> and so on, through to <code>image0015.jpg</code>.</p>
+<pre><code>	--framestart,	-fs
+</code></pre><p>Specifies the first frame number in the timelapse. Useful if you have already saved a number of frames, and want to start again at the next frame.</p>
+<pre><code>	--datetime,	-dt
+</code></pre><p>Instead of a simple frame number, the timelapse file names will use a date/time value of the format <code>aabbccddee</code>, where <code>aa</code> is the month, <code>bb</code> is the day of the month, <code>cc</code> is the hour, <code>dd</code> is the minute, and <code>ee</code> is the second.</p>
+<pre><code>	--timestamp,	-ts
+</code></pre><p>Instead of a simple frame number, the timelapse file names will use a single number which is the Unix timestamp, i.e. the seconds since 1970.</p>
+<pre><code>-t 30000 -tl 2000 -o image%04d.jpg
+</code></pre><p>Note that the <code>%04d</code> indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example, <code>%08d</code> would result in an 8-digit number.</p>
+<p>If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there&rsquo;s an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.</p>
+<pre><code>	--thumb,	-th		Set thumbnail parameters (x:y:quality)
+</code></pre><p>Allows specification of the thumbnail image inserted into the JPEG file. If not specified, defaults are a size of 64x48 at quality 35.</p>
+<p>if <code>--thumb none</code> is specified, no thumbnail information will be placed in the file. This reduces the file size slightly.</p>
+<pre><code>	--demo,	-d		Run a demo mode &lt;milliseconds&gt;
+</code></pre><p>This options cycles through the range of camera options. No capture is taken, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.</p>
+<pre><code>	--encoding,	-e		Encoding to use for output file
+</code></pre><p>Valid options are <code>jpg</code>, <code>bmp</code>, <code>gif</code>, and <code>png</code>. Note that unaccelerated image types (GIF, PNG, BMP) will take much longer to save than jpg, which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.</p>
+<pre><code>	--restart,	-rs
+</code></pre><p>Sets the JPEG restart marker interval to a specific value. Can be useful for lossy transport streams because it allows a broken JPEG file to still be partially displayed.</p>
+<pre><code>	--exif,	-x		EXIF tag to apply to captures (format as 'key=value')
+</code></pre><p>Allows the insertion of specific EXIF tags into the JPEG image. You can have up to 32 EXIF tag entries. This is useful for tasks like adding GPS metadata. For example, to set the longitude:</p>
+<pre><code>--exif GPS.GPSLongitude=5/1,10/1,15/1
+</code></pre><p>would set the longitude to 5 degs, 10 minutes, 15 seconds. See EXIF documentation for more details on the range of tags available; the supported tags are as follows:</p>
+<pre><code>IFD0.&lt;   or
+IFD1.&lt;
+ImageWidth, ImageLength, BitsPerSample, Compression, PhotometricInterpretation, ImageDescription, Make, Model, StripOffsets, Orientation, SamplesPerPixel, RowsPerString, StripByteCounts, XResolution, YResolution, PlanarConfiguration, ResolutionUnit, TransferFunction, Software, DateTime, Artist, WhitePoint, PrimaryChromaticities, JPEGInterchangeFormat, JPEGInterchangeFormatLength, YCbCrCoefficients, YCbCrSubSampling, YCbCrPositioning, ReferenceBlackWhite, Copyright&gt;
+
+EXIF.&lt;
+ExposureTime, FNumber, ExposureProgram, SpectralSensitivity, ISOSpeedRatings, OECF, ExifVersion, DateTimeOriginal, DateTimeDigitized, ComponentsConfiguration, CompressedBitsPerPixel, ShutterSpeedValue, ApertureValue, BrightnessValue, ExposureBiasValue, MaxApertureValue, SubjectDistance, MeteringMode, LightSource, Flash, FocalLength, SubjectArea, MakerNote, UserComment, SubSecTime, SubSecTimeOriginal, SubSecTimeDigitized, FlashpixVersion, ColorSpace, PixelXDimension, PixelYDimension, RelatedSoundFile, FlashEnergy, SpatialFrequencyResponse, FocalPlaneXResolution, FocalPlaneYResolution, FocalPlaneResolutionUnit, SubjectLocation, ExposureIndex, SensingMethod, FileSource, SceneType, CFAPattern, CustomRendered, ExposureMode, WhiteBalance, DigitalZoomRatio, FocalLengthIn35mmFilm, SceneCaptureType, GainControl, Contrast, Saturation, Sharpness, DeviceSettingDescription, SubjectDistanceRange, ImageUniqueID&gt;
+
+GPS.&lt;
+GPSVersionID, GPSLatitudeRef, GPSLatitude, GPSLongitudeRef, GPSLongitude, GPSAltitudeRef, GPSAltitude, GPSTimeStamp, GPSSatellites, GPSStatus, GPSMeasureMode, GPSDOP, GPSSpeedRef, GPSSpeed, GPSTrackRef, GPSTrack, GPSImgDirectionRef, GPSImgDirection, GPSMapDatum, GPSDestLatitudeRef, GPSDestLatitude, GPSDestLongitudeRef, GPSDestLongitude, GPSDestBearingRef, GPSDestBearing, GPSDestDistanceRef, GPSDestDistance, GPSProcessingMethod, GPSAreaInformation, GPSDateStamp, GPSDifferential&gt;
+
+EINT.&lt;
+InteroperabilityIndex, InteroperabilityVersion, RelatedImageFileFormat, RelatedImageWidth, RelatedImageLength&gt;
+</code></pre><p>Note that a small subset of these tags will be set automatically by the camera system, but will be overridden by any EXIF options on the command line.</p>
+<p>Setting <code>--exif none</code> will prevent any EXIF information being stored in the file. This reduces the file size slightly.</p>
+<pre><code>	--gpsdexif,	-gps
+</code></pre><p>Applies real-time EXIF information from any attached GPS dongle (using GSPD) to the image; requires <code>libgps.so</code> to be installed.</p>
+<pre><code>	--fullpreview,	-fp		Full preview mode
+</code></pre><p>This runs the preview window using the full resolution capture mode. Maximum frames per second in this mode is 15fps, and the preview will have the same field of view as the capture. Captures should happen more quickly, as no mode change should be required. This feature is currently under development.</p>
+<pre><code>	--keypress,	-k		Keypress mode
+</code></pre><p>The camera is run for the requested time (<code>-t</code>), and a capture can be initiated throughout that time by pressing the Enter key. Pressing X then Enter will exit the application before the timeout is reached. If the timeout is set to 0, the camera will run indefinitely until the user presses X then Enter. Using the verbose option (<code>-v</code>) will display a prompt asking for user input, otherwise no prompt is displayed.</p>
+<pre><code>	--signal,	-s		Signal mode
+</code></pre><p>The camera is run for the requested time (<code>-t</code>), and a capture can be initiated throughout that time by sending a <code>USR1</code> signal to the camera process. This can be done using the <code>kill</code> command. You can find the camera process ID using the <code>pgrep raspistill</code> command.</p>
+<p><code>kill -USR1 &lt;process id of raspistill&gt;</code></p>
+<pre><code>	--burst,	-bm
+</code></pre><p>Sets burst capture mode. This prevents the camera from returning to preview mode in between captures, meaning that captures can be taken closer together.</p>
+<h3 id="raspiyuv">raspiyuv</h3>
+<p>Many of the options for <code>raspiyuv</code> are the same as those for <code>raspistill</code>. This section shows the differences.</p>
+<p>Unsupported options:</p>
+<pre><code>--exif, --encoding, --thumb, --raw, --quality
+</code></pre><p>Extra options :</p>
+<pre><code>	--rgb,	-rgb		Save uncompressed data as RGB888
+</code></pre><p>This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.</p>
+<p>Note that the image buffers saved in <code>raspiyuv</code> are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.</p>
+<pre><code>	--luma,	-y
+</code></pre><p>Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image.</p>
+<pre><code>	--bgr,	-bgr
+</code></pre><p>Saves the image data as BGR data rather than YUV.</p>
+<h3 id="raspivid">raspivid</h3>
+<pre><code>	--width,	-w		Set image width &lt;size&gt;
+</code></pre><p>Width of resulting video. This should be between 64 and 1920.</p>
+<pre><code>	--height,	-h		Set image height &lt;size&gt;
+</code></pre><p>Height of resulting video. This should be between 64 and 1080.</p>
+<pre><code>	--bitrate,	-b		Set bitrate
+</code></pre><p>Use bits per second, so 10Mbits/s would be <code>-b 10000000</code>. For H264, 1080p30 a high quality bitrate would be 15Mbits/s or more. Maximum bitrate is 25Mbits/s (<code>-b 25000000</code>), but much over 17Mbits/s won&rsquo;t show noticeable improvement at 1080p30.</p>
+<pre><code>	--output,	-o		Output filename &lt;filename&gt;
+</code></pre><p>Specify the output filename. If not specified, no file is saved. If the filename is &lsquo;-&rsquo;, then all output is sent to stdout.</p>
+<p>To connect to a remote IPv4 host, use <code>tcp</code> or <code>udp</code> followed by the required IP Address. e.g. <code>tcp://192.168.1.2:1234</code> or <code>udp://192.168.1.2:1234</code>.</p>
+<p>To listen on a TCP port (IPv4) and wait for an incoming connection use <code>--listen (-l)</code> option, e.g. <code>raspivid -l -o tcp://0.0.0.0:3333</code> will bind to all network interfaces, <code>raspivid -l -o tcp://192.168.1.1:3333</code> will bind to a local IPv4.</p>
+<pre><code>	--listen,	-l
+</code></pre><p>When using a network connection as the data sink, this option will make the sytem wait for a connection from the remote system before sending data.</p>
+<pre><code>	--verbose,	-v		Output verbose information during run
+</code></pre><p>Outputs debugging/information messages during the program run.</p>
+<pre><code>	--timeout,	-t		Time before the camera takes picture and shuts down
+</code></pre><p>The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds. Setting 0 will mean the application will run continuously until stopped with Ctrl-C.</p>
+<pre><code>	--demo,	-d		Run a demo mode &lt;milliseconds&gt;
+</code></pre><p>This options cycles through the range of camera options. No capture is done, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.</p>
+<pre><code>	--framerate,	-fps		Specify the frames per second to record
+</code></pre><p>At present, the minimum frame rate allowed is 2fps, and the maximum is 30fps. This is likely to change in the future.</p>
+<pre><code>	--penc,	-e		Display preview image after encoding
+</code></pre><p>Switch on an option to display the preview after compression. This will show any compression artefacts in the preview window. In normal operation, the preview will show the camera output prior to being compressed. This option is not guaranteed to work in future releases.</p>
+<pre><code>	--intra,	-g		Specify the intra refresh period (key frame rate/GoP)
+</code></pre><p>Sets the intra refresh period (GoP) rate for the recorded video. H264 video uses a complete frame (I-frame) every intra refresh period, from which subsequent frames are based. This option specifies the number of frames between each I-frame. Larger numbers here will reduce the size of the resulting video, and smaller numbers make the stream less error-prone.</p>
+<pre><code>	--qp,	-qp		Set quantisation parameter
+</code></pre><p>Sets the initial quantisation parameter for the stream. Varies from approximately 10 to 40, and will greatly affect the quality of the recording. Higher values reduce quality and decrease file size. Combine this setting with a bitrate of 0 to set a completely variable bitrate.</p>
+<pre><code>	--profile,	-pf		Specify H264 profile to use for encoding
+</code></pre><p>Sets the H264 profile to be used for the encoding. Options are:</p>
+<ul>
+<li>baseline</li>
+<li>main</li>
+<li>high</li>
+</ul>
+<pre><code>	--level,	-lev
+</code></pre><p>Specifies the H264 encoder level to use for encoding. Options are <code>4</code>, <code>4.1</code>, and <code>4.2</code>.</p>
+<pre><code>	--irefresh,	-if
+</code></pre><p>Sets the H264 intra-refresh type. Possible options are <code>cyclic</code>, <code>adaptive</code>, <code>both</code>, and <code>cyclicrows</code>.</p>
+<pre><code>	--inline,	-ih		Insert PPS, SPS headers
+</code></pre><p>Forces the stream to include PPS and SPS headers on every I-frame. Needed for certain streaming cases e.g. Apple HLS. These headers are small, so don&rsquo;t greatly increase the file size.</p>
+<pre><code>	--spstimings,	-stm
+</code></pre><p>Insert timing information into the SPS block.</p>
+<pre><code>	--timed,	-td		Do timed switches between capture and pause
+</code></pre><p>This options allows the video capture to be paused and restarted at particular time intervals. Two values are required: the on time and the off time. On time is the amount of time the video is captured, and off time is the amount it is paused. The total time of the recording is defined by the <code>timeout</code> option. Note that the recording may take slightly over the timeout setting depending on the on and off times.</p>
+<p>For example:</p>
+<pre><code>raspivid -o test.h264 -t 25000 -timed 2500,5000
+</code></pre><p>will record for a period of 25 seconds. The recording will be over a timeframe consisting of 2500ms (2.5s) segments with 5000ms (5s) gaps, repeating over the 20s. So the entire recording will actually be only 10s long, since 4 segments of 2.5s = 10s separated by 5s gaps. So:</p>
+<p>2.5 record – 5 pause - 2.5 record – 5 pause - 2.5 record – 5 pause – 2.5 record</p>
+<p>gives a total recording period of 25s, but only 10s of actual recorded footage.</p>
+<pre><code>	--keypress,	-k		Toggle between record and pause on Enter keypress
+</code></pre><p>On each press of the Enter key, the recording will be paused or restarted. Pressing X then Enter will stop recording and close the application. Note that the timeout value will be used to signal the end of recording, but is only checked after each Enter keypress; so if the system is waiting for a keypress, even if the timeout has expired, it will still wait for the keypress before exiting.</p>
+<pre><code>	--signal,	-s		Toggle between record and pause according to SIGUSR1
+</code></pre><p>Sending a <code>USR1</code> signal to the <code>raspivid</code> process will toggle between recording and paused. This can be done using the <code>kill</code> command, as below. You can find the <code>raspivid</code> process ID using <code>pgrep raspivid</code>.</p>
+<p><code>kill -USR1 &lt;process id of raspivid&gt;</code></p>
+<p>Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the <code>SIGUSR1</code> signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.</p>
+<pre><code>	--split,	-sp
+</code></pre><p>When in a signal or keypress mode, each time recording is restarted, a new file is created.</p>
+<pre><code>	--circular,	-c
+</code></pre><p>Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved.</p>
+<pre><code>	--vectors,	-x
+</code></pre><p>Turns on output of motion vectors from the H264 encoder to the specified file name.</p>
+<pre><code>	--flush,	-fl
+</code></pre><p>Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written data, and can decrease latency.</p>
+<pre><code>	--save-pts,	-pts
+</code></pre><p>Saves timestamp information to the specified file. Useful as an imput file to <code>mkvmerge</code>.</p>
+<pre><code>	--codec,	-cd
+</code></pre><p>Specifies the encoder codec to use. Options are <code>H264</code> and <code>MJPEG</code>. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements.</p>
+<pre><code>	--initial,	-i		Define initial state on startup
+</code></pre><p>Define whether the camera will start paused or will immediately start recording. Options are <code>record</code> or <code>pause</code>. Note that if you are using a simple timeout, and <code>initial</code> is set to <code>pause</code>, no output will be recorded.</p>
+<pre><code>	--segment,	-sg		Segment the stream into multiple files
+</code></pre><p>Rather than creating a single file, the file is split into segments of approximately the number of milliseconds specified. In order to provide different filenames, you should add <code>%04d</code> or similar at the point in the filename where you want a segment count number to appear e.g:</p>
+<pre><code>--segment 3000 -o video%04d.h264
+</code></pre><p>will produce video clips of approximately 3000ms (3s) long, named <code>video0001.h264</code>, <code>video0002.h264</code> etc. The clips should be seamless (no frame drops between clips), but the accuracy of each clip length will depend on the intraframe period, as the segments will always start on an I-frame. They will therefore always be equal or longer to the specified period.</p>
+<p>The most recent version of Raspivid will also allow the file name to be time-based, rather than using a segment number. For example:</p>
+<pre><code>--segment 3000 -o video_%c.h264
+</code></pre><p>will produce file names formatted like so: <code>video_Fri Jul 20 16:23:48 2018.h264</code></p>
+<p>There are many different formatting options available — see <a href="http://man7.org/linux/man-pages/man3/strftime.3.html" target="_blank" rel="noopener noreffer">here</a> for a full list. Note than the <code>%d</code> and <code>%u</code> options are not available, as they are used for the segment number formatting, and that some combinations may produce invalid file names.</p>
+<pre><code>	--wrap,	-wr		Set the maximum value for segment number
+</code></pre><p>When outputting segments, this is the maximum the segment number can reach before it&rsquo;s reset to 1, giving the ability to keep recording segments, but overwriting the oldest one. So if set to 4, in the segment example above, the files produced will be <code>video0001.h264</code>, <code>video0002.h264</code>, <code>video0003.h264</code>, and <code>video0004.h264</code>. Once <code>video0004.h264</code> is recorded, the count will reset to 1, and <code>video0001.h264</code> will be overwritten.</p>
+<pre><code>	--start,	-sn		Set the initial segment number
+</code></pre><p>When outputting segments, this is the initial segment number, giving the ability to resume a previous recording from a given segment. The default value is 1.</p>
+<pre><code>	--raw,	-r
+</code></pre><p>Specify the output file name for any raw data files requested.</p>
+<pre><code>	--raw-format,	-rf
+</code></pre><p>Specify the raw format to be used if raw output requested. Options as <code>yuv</code>, <code>rgb</code>, and <code>grey</code>. <code>grey</code> simply saves the Y channel of the YUV image.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="still-captures">Still captures</h3>
+<p>By default, captures are done at the highest resolution supported by the sensor. This can be changed using the <code>-w</code> and <code>-h</code> command line options.</p>
+<p>Take a default capture after 2s (times are specified in milliseconds) on the viewfinder, saving in <code>image.jpg</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg
+</code></pre></div><p>Take a capture at a different resolution:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -w <span class="m">640</span> -h <span class="m">480</span>
+</code></pre></div><p>Reduce the quality considerably to reduce file size:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -q <span class="m">5</span>
+</code></pre></div><p>Force the preview to appear at coordinate 100,100, with width 300 pixels and height 200 pixels:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -p 100,100,300,200
+</code></pre></div><p>Disable preview entirely:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -n
+</code></pre></div><p>Save the image as a PNG file (lossless compression, but slower than JPEG). Note that the filename suffix is ignored when choosing the image encoding:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.png –e png
+</code></pre></div><p>Add some EXIF information to the JPEG. This sets the Artist tag name to Boris, and the GPS altitude to 123.5m. Note that if setting GPS tags you should set as a minimum GPSLatitude, GPSLatitudeRef, GPSLongitude, GPSLongitudeRef, GPSAltitude, and GPSAltitudeRef:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -x IFD0.Artist<span class="o">=</span>Boris -x GPS.GPSAltitude<span class="o">=</span>1235/10
+</code></pre></div><p>Set an emboss image effect:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -ifx emboss
+</code></pre></div><p>Set the U and V channels of the YUV image to specific values (128:128 produces a greyscale image):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o image.jpg -cfx 128:128
+</code></pre></div><p>Run preview for 2s, with no saved image:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span>
+</code></pre></div><p>Take a time-lapse picture, every 10 seconds for 10 minutes (10 minutes = 600000ms), naming the files <code>image_num_001_today.jpg</code>, <code>image_num_002_today.jpg</code> and so on, with the latest picture also available under the name <code>latest.jpg</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">600000</span> -tl <span class="m">10000</span> -o image_num_%03d_today.jpg -l latest.jpg
+</code></pre></div><p>Take a picture and send the image data to stdout:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o -
+</code></pre></div><p>Take a picture and send the image data to a file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">2000</span> -o - &gt; my_file.jpg
+</code></pre></div><p>Run the camera forever, taking a picture when Enter is pressed:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspistill -t <span class="m">0</span> -k -o my_pics%02d.jpg
+</code></pre></div><h3 id="video-captures">Video captures</h3>
+<p>Image size and preview settings are the same as for stills capture. Default size for video recording is 1080p (1920x1080).</p>
+<p>Record a 5s clip with default settings (1080p30):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspivid -t <span class="m">5000</span> -o video.h264
+</code></pre></div><p>Record a 5s clip at a specified bitrate (3.5Mbits/s):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspivid -t <span class="m">5000</span> -o video.h264 -b <span class="m">3500000</span>
+</code></pre></div><p>Record a 5s clip at a specified framerate (5fps):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspivid -t <span class="m">5000</span> -o video.h264 -f <span class="m">5</span>
+</code></pre></div><p>Encode a 5s camera stream and send the image data to stdout:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspivid -t <span class="m">5000</span> -o -
+</code></pre></div><p>Encode a 5s camera stream and send the image data to a file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">raspivid -t <span class="m">5000</span> -o - &gt; my_file.h264
+</code></pre></div><h2 id="shell-error-codes">Shell error codes</h2>
+<p>The applications described here will return a standard error code to the shell on completion. Possible error codes are:</p>
+<table>
+<thead>
+<tr>
+<th>C Define</th>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EX_OK</td>
+<td>0</td>
+<td>Application ran successfully</td>
+</tr>
+<tr>
+<td>EX_USAGE</td>
+<td>64</td>
+<td>Bad command line parameter</td>
+</tr>
+<tr>
+<td>EX_SOFTWARE</td>
+<td>70</td>
+<td>Software or camera error</td>
+</tr>
+<tr>
+<td></td>
+<td>130</td>
+<td>Application terminated by Ctrl-C</td>
+</tr>
+</tbody>
+</table></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-06-14</span>
+            </div>
+            <div class="post-info-license"><span>C.C 4.0</span></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-cam-doc/" data-title="Raspberry Pi Camera Module Documentation" data-hashtags="Raspberry-Pi,Pi-Camera,Web-Archive"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-cam-doc/" data-title="Raspberry Pi Camera Module Documentation"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/raspberry-pi/">Raspberry-Pi</a>,&nbsp;<a href="/tags/pi-camera/">Pi-Camera</a>,&nbsp;<a href="/tags/web-archive/">Web-Archive</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/pivpn/" class="prev" rel="prev" title="Setting Up Wireguard VPN in Raspberry Pi"><i class="fas fa-angle-left fa-fw"></i>Setting Up Wireguard VPN in Raspberry Pi</a>
+            <a href="/posts/i3-help/" class="next" rel="next" title="Manjaro I3 Shortcut Cheatsheet">Manjaro I3 Shortcut Cheatsheet<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">5M1Sec</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://ittosei.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Ittosei Blog","id-2":"Ittosei Blog"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":50}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

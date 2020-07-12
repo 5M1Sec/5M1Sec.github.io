@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Setting Up Wireguard VPN in Raspberry Pi - </title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Setting Up Wireguard VPN in Raspberry Pi" />
+<meta property="og:description" content="
+
+This tutorial will help you setting up a Wireguard VPN on Raspberry Pi by using PiVPN installer. This article will use Raspberry Pi OS (Raspbian) for installation. The PiVPN site claims the installer will also work on Debian and Ubuntu.
+I choose Wireguard over OpenVPN due to the convenience of connecting though QR code. In OpenVPN, you have to transfer security key via USB stick and some extra works to transfer it to a phone. However OpenVPN has the option with more encryption bits, but more encryption bits will cost more to compute and slow the transfer time. You can find out more in the PiVPN website.
+I assume my audience have little background knowledge, so hope you can follow this without any problem. But I do not assume that you know how to type in the terminal." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ittosei.com/posts/pivpn/" />
+<meta property="article:published_time" content="2020-06-08T01:40:12-04:00" />
+<meta property="article:modified_time" content="2020-06-08T01:40:12-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting Up Wireguard VPN in Raspberry Pi"/>
+<meta name="twitter:description" content="
+
+This tutorial will help you setting up a Wireguard VPN on Raspberry Pi by using PiVPN installer. This article will use Raspberry Pi OS (Raspbian) for installation. The PiVPN site claims the installer will also work on Debian and Ubuntu.
+I choose Wireguard over OpenVPN due to the convenience of connecting though QR code. In OpenVPN, you have to transfer security key via USB stick and some extra works to transfer it to a phone. However OpenVPN has the option with more encryption bits, but more encryption bits will cost more to compute and slow the transfer time. You can find out more in the PiVPN website.
+I assume my audience have little background knowledge, so hope you can follow this without any problem. But I do not assume that you know how to type in the terminal."/>
+<meta name="application-name" content="Ittosei Blog">
+<meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pivpn/" /><link rel="prev" href="http://ittosei.com/posts/namesilo-ddns/" /><link rel="next" href="http://ittosei.com/posts/pi-cam-doc/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Setting Up Wireguard VPN in Raspberry Pi",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/ittosei.com\/posts\/pivpn\/"
+        },"genre": "posts","keywords": "Rasberry Pi, VPN, Wireguard, DDNS, Ubuntu","wordcount":  1345 ,
+        "url": "http:\/\/ittosei.com\/posts\/pivpn\/","datePublished": "2020-06-08T01:40:12-04:00","dateModified": "2020-06-08T01:40:12-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "5M1Sec"},"author": {
+                "@type": "Person",
+                "name": "5M1Sec"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title=""><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title=""><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Setting Up Wireguard VPN in Raspberry Pi</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw"></i>Tutorials</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry-Pi</a>&nbsp;<a href="/categories/computer-science-related/"><i class="far fa-folder fa-fw"></i>Computer Science Related</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-08">2020-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1345 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-dynamic-dns-ddns">About Dynamic DNS (DDNS):</a></li>
+    <li><a href="#setting-up-with-noip">Setting up with NOIP</a></li>
+    <li><a href="#setting-up-ddns-with-your-own-domain">Setting up DDNS with Your Own Domain</a>
+      <ul>
+        <li><a href="#buying-a-domain">Buying a Domain</a></li>
+        <li><a href="#adding-a-dns-record">Adding a DNS Record</a></li>
+      </ul>
+    </li>
+    <li><a href="#set-up-pivpn">Set up PiVPN</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#setting-up-static-private-ip-for-pi">Setting up Static Private IP for Pi</a></li>
+        <li><a href="#select-user">Select User</a></li>
+        <li><a href="#select-vpn-protocol">Select VPN Protocol</a></li>
+        <li><a href="#specify-output-port">Specify Output Port</a></li>
+        <li><a href="#select-dns-provider">Select DNS provider</a></li>
+        <li><a href="#dns-entry">DNS entry</a></li>
+        <li><a href="#unattended-upgrade">Unattended Upgrade</a></li>
+      </ul>
+    </li>
+    <li><a href="#port-forwarding-in-router">Port Forwarding in Router</a></li>
+    <li><a href="#how-to-use-pivpn">How to use PIVPN</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>This tutorial will help you setting up a Wireguard VPN on Raspberry Pi by using PiVPN installer. This article will use Raspberry Pi OS (Raspbian) for installation. The <a href="https://www.pivpn.io" target="_blank" rel="noopener noreffer">PiVPN</a> site claims the installer will also work on Debian and Ubuntu.</p>
+<p>I choose <strong>Wireguard</strong> over <strong>OpenVPN</strong> due to the convenience of connecting though QR code. In <strong>OpenVPN</strong>, you have to transfer security key via USB stick and some extra works to transfer it to a phone. However <strong>OpenVPN</strong> has the option with more encryption bits, but more encryption bits will cost more to compute and slow the transfer time. You can find out more in the <a href="https://www.pivpn.io" target="_blank" rel="noopener noreffer">PiVPN</a> website.</p>
+<p>I assume my audience have little background knowledge, so hope you can follow this without any problem. <strong>But I do not assume that you know how to type in the terminal.</strong></p>
+<p>You will need the followings:</p>
+<ul>
+<li><strong>Raspberry Pi</strong>
+<ul>
+<li>The essentials are Raspberry Pi board, micro SD card, power cable and adapter.</li>
+<li>Your Raspberry Pi will need some forms of the Internet access, either trough WI-FI or ethernet.</li>
+</ul>
+</li>
+<li><strong>Have access to your router</strong>
+<ul>
+<li>A modem is connected by the cable through your wall. A router is connected by the modem. Search the model up if you are not sure which one is router and which one is modem.</li>
+<li>You will need login to your router homepage. This is router brand dependent.</li>
+</ul>
+</li>
+<li><strong>A domain(optional, but highly recommended)</strong>
+<ul>
+<li>The alternative <strong>NOIP</strong> option (free tier) requires you to active it every month, which is annoying to me. Having everything in control is neat, isn&rsquo;t it?</li>
+<li>A domain will be used for setting up DNS entry.</li>
+<li>One domain can have multiple usage, such as setting up website. So do not be afraid the domain can only be used by this set-up.</li>
+</ul>
+</li>
+</ul>
+<div class="details admonition abstract">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>An overview of procedure<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>(If you have a domain) Setting up a A-record for Dynamic DNS(DDNS) usage.
+<ol>
+<li>(If you do not have a domain) Setting up NOIP for DDNS.</li>
+</ol>
+</li>
+<li>Install PiVPN.</li>
+<li>Setting up a static private IP for the Pi in the router.</li>
+<li>Setting up port forwarding in the router.</li>
+</ol>
+</div>
+        </div>
+    </div>
+<h2 id="about-dynamic-dns-ddns">About Dynamic DNS (DDNS):</h2>
+<p>For analogy, a domain is the name of your address, like White House, and the IP is your actual address, 1600 Pennsylvania Ave NW, Washington, DC 20500. Remembering a IP address is harder than remembering a domain name. Even you can remember it for one time, our home IP can be changed over time. So our resolution is to have a domain name, e.g. exmaple.com, myblog.io, hello.cc,  points to your IP address, and update it whenever your IP has changed. This is called <strong>dynamic DNS</strong>.</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning: NameSilo and DDNS<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Some domain registries and router provide the function of DDNS. Please note like <strong>NameSilo</strong> does not provide a DDNS option. But I did write a Python <a href="https://ittosei.com/posts/namesilo-ddns/" target="_blank" rel="noopener noreffer">script</a> for the DDNS of NameSilo domain.</div>
+        </div>
+    </div>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>My recommendation<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>If you do not have a domain, I recommend you set it up with NOIP first to make sure nothing is bugging you.</p>
+<p>When you have a working VPN connection, uninstall the PiVPN and reconfigure it with your own domain if you want.</p>
+<p>I recommend you uninstall the PiVPN rather than reconfigure it. I have to uninstall it to solve some unknown bugs during reconfiguration.</p>
+</div>
+        </div>
+    </div>
+<h2 id="setting-up-with-noip">Setting up with NOIP</h2>
+<p>Go to <a href="https://www.noip.com" target="_blank" rel="noopener noreffer">NOIP</a> website, after completing registration, create a hostname.</p>
+<a class="lightgallery" href="/images/pivpn/pivpn-a-record-noip.png" title="/images/pivpn/pivpn-a-record-noip.png" data-thumbnail="/images/pivpn/pivpn-a-record-noip.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-a-record-noip.png"
+            data-srcset="/images/pivpn/pivpn-a-record-noip.png, /images/pivpn/pivpn-a-record-noip.png 1.5x, /images/pivpn/pivpn-a-record-noip.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-a-record-noip.png" />
+    </a>
+<p>You will need to enter your home IP address. Your public IP can be obtain by googling <strong>&ldquo;my ip&rdquo;</strong>.</p>
+<p>Please remember your entered domain. The setup is complete for the first installation. Depending on your system, you will need to read how to automatically update the IP address in the <strong>NOIP</strong> website.</p>
+<h2 id="setting-up-ddns-with-your-own-domain">Setting up DDNS with Your Own Domain</h2>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>If you have set up the NOIP<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Please skip this
+section if you have set up the NOIP.</div>
+        </div>
+    </div>
+<h3 id="buying-a-domain">Buying a Domain</h3>
+<p>You will need to buy your domain name from some registries. You can do more research on this. Be cautious about the first year price and the renewing price. Some registries have a cheap first year price and higher renewing price, which costs more sustainably. I personally use <strong>NameSilo</strong> because it is cheap for a .com domain for me.</p>
+<h3 id="adding-a-dns-record">Adding a DNS Record</h3>
+<p>You will need to add a A-record that points to your home IP address. In <strong>NameSilo</strong>, it is under <strong>Manage DNS</strong>.</p>
+<a class="lightgallery" href="/images/pivpn/pivpn-a-record-ns.png" title="/images/pivpn/pivpn-a-record-ns.png" data-thumbnail="/images/pivpn/pivpn-a-record-ns.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-a-record-ns.png"
+            data-srcset="/images/pivpn/pivpn-a-record-ns.png, /images/pivpn/pivpn-a-record-ns.png 1.5x, /images/pivpn/pivpn-a-record-ns.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-a-record-ns.png" />
+    </a>
+<p><strong>ittosei.com</strong> is my apex/naked domain. Every domain that is in front of my apex domain is called subdomain, e.g. <strong>example.ittosei.com</strong>, <strong>ddns.ittosei.com</strong>. My apex domain is used for hosting my blog, but you can also use your apex domain for DDNS.</p>
+<p>You will need to enter your public IP in the IPV4 entry. Your public IP can be obtain by googling <strong>&ldquo;my ip&rdquo;</strong>.</p>
+<p>You do not need to concern about the TTL, leave it as default.</p>
+<h2 id="set-up-pivpn">Set up PiVPN</h2>
+<h3 id="installation">Installation</h3>
+<p>Open the terminal or SSH to Pi and run the following commands:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -L https://install.pivpn.io <span class="p">|</span> bash
+</code></pre></div><p><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Controlling PiVPN installer interface<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">You can navigate the interface with your arrow keys.<br>
+Press <strong>space</strong> to select an option.<br>
+Press <strong>enter</strong> to confirm.</div>
+        </div>
+    </div>
+You can read the prompt and follow most of the prompt without any issue.</p>
+<h3 id="setting-up-static-private-ip-for-pi">Setting up Static Private IP for Pi</h3>
+<p>When encountering DHCP setting as following:</p>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-DHCP.png" title="/images/pivpn/pivpn-DHCP.png" data-thumbnail="/images/pivpn/pivpn-DHCP.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-DHCP.png"
+            data-srcset="/images/pivpn/pivpn-DHCP.png, /images/pivpn/pivpn-DHCP.png 1.5x, /images/pivpn/pivpn-DHCP.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-DHCP.png" />
+    </a><br>
+Please take the note of the IP address and we will set it up as static.</p>
+<p>The Internet is in the same scale as post office. It is meant to be a world wide communication. Your public IP is your home address. But what if you only want to communicate within your house? All devices in your house has its IP address.</p>
+<p>Just like your public IP, your private IP also changes over time. It is due to the inactivity of the devices and the choice of your router. But fortunately, we can set it as a static IP at not cost. This is set by the router.</p>
+<p>Go to your router home page, find something like DHCP(Dynamic Host Configuration Protocol) IP reservation, or static IP. Set your Raspberry Pi with the IP above.</p>
+<p>You can also choose no to let the software to set it up. But manually set it up in the router is the better choice.</p>
+<h3 id="select-user">Select User</h3>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-pi-user.png" title="/images/pivpn/pivpn-pi-user.png" data-thumbnail="/images/pivpn/pivpn-pi-user.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-pi-user.png"
+            data-srcset="/images/pivpn/pivpn-pi-user.png, /images/pivpn/pivpn-pi-user.png 1.5x, /images/pivpn/pivpn-pi-user.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-pi-user.png" />
+    </a><br>
+Press space to select a user, then press enter.</p>
+<h3 id="select-vpn-protocol">Select VPN Protocol</h3>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-VPN.png" title="/images/pivpn/pivpn-VPN.png" data-thumbnail="/images/pivpn/pivpn-VPN.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-VPN.png"
+            data-srcset="/images/pivpn/pivpn-VPN.png, /images/pivpn/pivpn-VPN.png 1.5x, /images/pivpn/pivpn-VPN.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-VPN.png" />
+    </a><br>
+Select <strong>Wireguard</strong>.</p>
+<h3 id="specify-output-port">Specify Output Port</h3>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-port.png" title="/images/pivpn/pivpn-port.png" data-thumbnail="/images/pivpn/pivpn-port.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-port.png"
+            data-srcset="/images/pivpn/pivpn-port.png, /images/pivpn/pivpn-port.png 1.5x, /images/pivpn/pivpn-port.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-port.png" />
+    </a><br>
+Please remember the port you entered here. You can change the port number, but do note that <strong>port from 0 to 1023 are reserved</strong> for the special usages.</p>
+<h3 id="select-dns-provider">Select DNS provider</h3>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-DNS-provider.png" title="/images/pivpn/pivpn-DNS-provider.png" data-thumbnail="/images/pivpn/pivpn-DNS-provider.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-DNS-provider.png"
+            data-srcset="/images/pivpn/pivpn-DNS-provider.png, /images/pivpn/pivpn-DNS-provider.png 1.5x, /images/pivpn/pivpn-DNS-provider.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-DNS-provider.png" />
+    </a><br>
+You can choose it by your preference. I just chose <strong>Google</strong>.</p>
+<h3 id="dns-entry">DNS entry</h3>
+<p><a class="lightgallery" href="/images/pivpn/pivpn-DNS-entry.png" title="/images/pivpn/pivpn-DNS-entry.png" data-thumbnail="/images/pivpn/pivpn-DNS-entry.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-DNS-entry.png"
+            data-srcset="/images/pivpn/pivpn-DNS-entry.png, /images/pivpn/pivpn-DNS-entry.png 1.5x, /images/pivpn/pivpn-DNS-entry.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-DNS-entry.png" />
+    </a><br>
+Select the public DNS entry.<br>
+<a class="lightgallery" href="/images/pivpn/pivpn-ddns.png" title="/images/pivpn/pivpn-ddns.png" data-thumbnail="/images/pivpn/pivpn-ddns.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-ddns.png"
+            data-srcset="/images/pivpn/pivpn-ddns.png, /images/pivpn/pivpn-ddns.png 1.5x, /images/pivpn/pivpn-ddns.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-ddns.png" />
+    </a><br>
+Enter the DDNS address you obtained from above.</p>
+<h3 id="unattended-upgrade">Unattended Upgrade</h3>
+<p>Select yes for the unattended upgrade.
+You should see a prompt for <strong>Installation Complete</strong> and reboot the Pi.</p>
+<h2 id="port-forwarding-in-router">Port Forwarding in Router</h2>
+<p>The Internet is composed with different subnetworks. You home is also a network composed by all of your devices. If you obtained your public IP, then you can probably wonder if both of your phone and laptop in your house have the same IP address. The answer is yes. All devices in your hose share the same IP address from your modem. The router doesn&rsquo;t know how to handle the random incoming connection at port 51820. Thus we need to tell the router to forward the random incoming connection with port 51820 to our Pi to establish a VPN connection.</p>
+<p>You are required to do this with either <strong>Wireguard</strong> or <strong>OpenVPN</strong>.<br>
+Go to your router homepage, and find port forwarding option. Forward the VPN port you choose and forward to the static private IP address of your Pi.
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>SSH to your computer<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">You can also use the same method to SSH your computer by forwarding a non-reserved port to port 22 of your computer.</div>
+        </div>
+    </div></p>
+<h2 id="how-to-use-pivpn">How to use PIVPN</h2>
+<p>Type <code>pivpn</code>.
+A list of available commands will show up.
+<a class="lightgallery" href="/images/pivpn/pivpn-cli.png" title="/images/pivpn/pivpn-cli.png" data-thumbnail="/images/pivpn/pivpn-cli.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pivpn/pivpn-cli.png"
+            data-srcset="/images/pivpn/pivpn-cli.png, /images/pivpn/pivpn-cli.png 1.5x, /images/pivpn/pivpn-cli.png 2x"
+            data-sizes="auto"
+            alt="/images/pivpn/pivpn-cli.png" />
+    </a></p>
+<p>Type <code>pivpn add</code> to add a client.<br>
+Type <code>pivpn -qr</code> to see the QR code of your client.</p>
+<p>Download the Wireguard app for IOS or Android and scan the QR code you obtained. Now your secure connection is establish.</p>
+<p>At this stage, you are finished with the setup.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-06-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pivpn/" data-title="Setting Up Wireguard VPN in Raspberry Pi" data-hashtags="Rasberry Pi,VPN,Wireguard,DDNS,Ubuntu"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pivpn/" data-title="Setting Up Wireguard VPN in Raspberry Pi"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/rasberry-pi/">Rasberry Pi</a>,&nbsp;<a href="/tags/vpn/">VPN</a>,&nbsp;<a href="/tags/wireguard/">Wireguard</a>,&nbsp;<a href="/tags/ddns/">DDNS</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/namesilo-ddns/" class="prev" rel="prev" title="Python Script for Namesilo DDNS"><i class="fas fa-angle-left fa-fw"></i>Python Script for Namesilo DDNS</a>
+            <a href="/posts/pi-cam-doc/" class="next" rel="next" title="Raspberry Pi Camera Module Documentation">Raspberry Pi Camera Module Documentation<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">5M1Sec</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://ittosei.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"Ittosei Blog","id-2":"Ittosei Blog"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":50}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

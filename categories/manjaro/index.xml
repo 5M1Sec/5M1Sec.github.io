@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Manjaro - Category - </title>
+        <link>http://ittosei.com/categories/manjaro/</link>
+        <description>Manjaro - Category - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Jun 2020 10:43:18 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/manjaro/" rel="self" type="application/rss+xml" /><item>
+    <title>Manjaro I3 Shortcut Cheatsheet</title>
+    <link>http://ittosei.com/posts/i3-help/</link>
+    <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/i3-help/</guid>
+    <description><![CDATA[Note  This is a cheatsheet that came along with the installation of Manjaro i3wm. I ported the PDF version to this Markdown format.
+From the signature, the original author is oberon.
+It is tedious for me to open helper PDF every time and resize it to my preference.
+I hope this will help you navigating in the i3.
+   Welcome to manjaro i3! The default mod-key is &lt;Super&gt; (Windows-key).]]></description>
+</item></channel>
+</rss>
