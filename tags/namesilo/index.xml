@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Namesilo - Tag - </title>
+        <title>Namesilo - Tag - Ittosei Blog</title>
         <link>http://ittosei.com/tags/namesilo/</link>
-        <description>Namesilo - Tag - </description>
+        <description>Namesilo - Tag - Ittosei Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jun 2020 19:09:00 -0400</lastBuildDate><atom:link href="http://ittosei.com/tags/namesilo/" rel="self" type="application/rss+xml" /><item>
     <title>Python Script for Namesilo DDNS</title>
     <link>http://ittosei.com/posts/namesilo-ddns/</link>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tools - Category - </title>
+        <title>Tools - Category - Ittosei Blog</title>
         <link>http://ittosei.com/categories/tools/</link>
-        <description>Tools - Category - </description>
+        <description>Tools - Category - Ittosei Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Jun 2020 19:09:00 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/tools/" rel="self" type="application/rss+xml" /><item>
     <title>Python Script for Namesilo DDNS</title>
     <link>http://ittosei.com/posts/namesilo-ddns/</link>
