@@ -3,7 +3,23 @@
         <title>Computer Science Related - Category - Ittosei Blog</title>
         <link>http://ittosei.com/categories/computer-science-related/</link>
         <description>Computer Science Related - Category - Ittosei Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Jun 2020 10:43:18 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/computer-science-related/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 05:17:48 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/computer-science-related/" rel="self" type="application/rss+xml" /><item>
+    <title>Forum Framework Recommendation: Discourse</title>
+    <link>http://ittosei.com/posts/discourse/</link>
+    <pubDate>Wed, 22 Jul 2020 05:17:48 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/discourse/</guid>
+    <description><![CDATA[Discourse is an open source forum framework. I found it is used in the forum I visited. I did an installation on the $5 Digital Ocean Droplet. Then I realize a lot of forums are using it by recognizing its optional styles.
+The official website is here. At first glance, the website does not mention self-hosting options. But in the &ldquo;about&rdquo; page, you will find the Github repository.
+Note on Digital Ocean Droplet The installation is extremely easy.]]></description>
+</item><item>
+    <title>Amethyst Shortcuts - MacOS Tiling Window Management</title>
+    <link>http://ittosei.com/posts/amethyst/</link>
+    <pubDate>Wed, 22 Jul 2020 03:37:24 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/amethyst/</guid>
+    <description><![CDATA[<p>I was very satisfied about the productivity of i3wm under Linux. Amethyst is the replacement that I found under MacOS. I list the default shortcuts with some organizations for getting used to it.</p>]]></description>
+</item><item>
     <title>Manjaro I3 Shortcut Cheatsheet</title>
     <link>http://ittosei.com/posts/i3-help/</link>
     <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>

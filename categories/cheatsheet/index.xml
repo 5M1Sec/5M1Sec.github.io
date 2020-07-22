@@ -3,7 +3,14 @@
         <title>Cheatsheet - Category - Ittosei Blog</title>
         <link>http://ittosei.com/categories/cheatsheet/</link>
         <description>Cheatsheet - Category - Ittosei Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Jun 2020 10:43:18 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/cheatsheet/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 03:37:24 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/cheatsheet/" rel="self" type="application/rss+xml" /><item>
+    <title>Amethyst Shortcuts - MacOS Tiling Window Management</title>
+    <link>http://ittosei.com/posts/amethyst/</link>
+    <pubDate>Wed, 22 Jul 2020 03:37:24 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/amethyst/</guid>
+    <description><![CDATA[<p>I was very satisfied about the productivity of i3wm under Linux. Amethyst is the replacement that I found under MacOS. I list the default shortcuts with some organizations for getting used to it.</p>]]></description>
+</item><item>
     <title>Manjaro I3 Shortcut Cheatsheet</title>
     <link>http://ittosei.com/posts/i3-help/</link>
     <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>

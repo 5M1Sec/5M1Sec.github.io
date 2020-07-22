@@ -3,26 +3,33 @@
         <title>Categories - Category - Ittosei Blog</title>
         <link>http://ittosei.com/categories/</link>
         <description>Categories - Category - Ittosei Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 12 Jul 2020 16:36:52 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 05:17:48 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Computer Science Related</title>
+    <link>http://ittosei.com/categories/computer-science-related/</link>
+    <pubDate>Wed, 22 Jul 2020 05:17:48 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/categories/computer-science-related/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Sharing</title>
+    <link>http://ittosei.com/categories/sharing/</link>
+    <pubDate>Wed, 22 Jul 2020 05:17:48 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/categories/sharing/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Cheatsheet</title>
+    <link>http://ittosei.com/categories/cheatsheet/</link>
+    <pubDate>Wed, 22 Jul 2020 03:37:24 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/categories/cheatsheet/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Amateur Astronomy</title>
     <link>http://ittosei.com/categories/amateur-astronomy/</link>
     <pubDate>Sun, 12 Jul 2020 16:36:52 -0400</pubDate>
     <author>Author</author>
     <guid>http://ittosei.com/categories/amateur-astronomy/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Cheatsheet</title>
-    <link>http://ittosei.com/categories/cheatsheet/</link>
-    <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>
-    <author>Author</author>
-    <guid>http://ittosei.com/categories/cheatsheet/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Computer Science Related</title>
-    <link>http://ittosei.com/categories/computer-science-related/</link>
-    <pubDate>Sat, 20 Jun 2020 10:43:18 -0400</pubDate>
-    <author>Author</author>
-    <guid>http://ittosei.com/categories/computer-science-related/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Linux</title>
