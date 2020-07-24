@@ -3,14 +3,7 @@
         <title>All Posts - Ittosei Blog</title>
         <link>http://ittosei.com/posts/</link>
         <description>All Posts | Ittosei Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 24 Jul 2020 13:32:43 -0400</lastBuildDate><atom:link href="http://ittosei.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Temp</title>
-    <link>http://ittosei.com/posts/temp/</link>
-    <pubDate>Fri, 24 Jul 2020 13:32:43 -0400</pubDate>
-    <author>Author</author>
-    <guid>http://ittosei.com/posts/temp/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 05:17:48 -0400</lastBuildDate><atom:link href="http://ittosei.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Forum Framework Recommendation: Discourse</title>
     <link>http://ittosei.com/posts/discourse/</link>
     <pubDate>Wed, 22 Jul 2020 05:17:48 -0400</pubDate>
