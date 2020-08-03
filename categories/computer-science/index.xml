@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Ittosei Blog</title>
-        <link>http://ittosei.com/</link>
-        <description>Sharing Curiosity</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Aug 2020 22:06:06 -0400</lastBuildDate>
-            <atom:link href="http://ittosei.com/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>Computer Science - Category - Ittosei Blog</title>
+        <link>http://ittosei.com/categories/computer-science/</link>
+        <description>Computer Science - Category - Ittosei Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Aug 2020 22:06:06 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/computer-science/" rel="self" type="application/rss+xml" /><item>
     <title> Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]</title>
     <link>http://ittosei.com/posts/pi-security-cam-1/</link>
     <pubDate>Sun, 02 Aug 2020 22:06:06 -0400</pubDate>
@@ -28,17 +26,6 @@ Note on Digital Ocean Droplet The installation is extremely easy.]]></descriptio
     <author>Author</author>
     <guid>http://ittosei.com/posts/amethyst/</guid>
     <description><![CDATA[<p>I was very satisfied about the productivity of i3wm under Linux. Amethyst is the replacement that I found under MacOS. I list the default shortcuts with some organizations for getting used to it.</p>]]></description>
-</item><item>
-    <title>First Moon Observation</title>
-    <link>http://ittosei.com/posts/first-observation/</link>
-    <pubDate>Sun, 12 Jul 2020 16:36:52 -0400</pubDate>
-    <author>Author</author>
-    <guid>http://ittosei.com/posts/first-observation/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/first-astro/title.png" referrerpolicy="no-referrer">
-            </div>Recently, I purchased my first telescope. Soon I conducted my first observing session in my backyard. It was full moon, but the view condition isn&rsquo;t that perfect. The view though telescope is wonderful, but not as astonishing as I imagined. I took some pictures though telescope by my phone. It is not perfectly but I still love it.
-Images I cropped the image for file sizing.
-9mm" 9mm  30mm" 30mm  Overall, I was very exciting during the whole observation.]]></description>
 </item><item>
     <title>Manjaro I3 Shortcut Cheatsheet</title>
     <link>http://ittosei.com/posts/i3-help/</link>

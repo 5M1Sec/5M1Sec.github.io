@@ -5,34 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Python Script for Namesilo DDNS - Ittosei Blog</title><meta name="Description" content="Alternative DDNS of NOIP"><meta property="og:title" content="Python Script for Namesilo DDNS" />
-<meta property="og:description" content="Alternative DDNS of NOIP" />
+        <title> Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1] - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content=" Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]" />
+<meta property="og:description" content="I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the MotionEyeOS. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ittosei.com/posts/namesilo-ddns/" />
-<meta property="article:published_time" content="2020-06-07T19:09:00-04:00" />
-<meta property="article:modified_time" content="2020-06-07T19:09:00-04:00" />
+<meta property="og:url" content="http://ittosei.com/posts/pi-security-cam-1/" />
+<meta property="article:published_time" content="2020-08-02T22:06:06-04:00" />
+<meta property="article:modified_time" content="2020-08-02T22:06:06-04:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python Script for Namesilo DDNS"/>
-<meta name="twitter:description" content="Alternative DDNS of NOIP"/>
+<meta name="twitter:title" content=" Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]"/>
+<meta name="twitter:description" content="I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the MotionEyeOS. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera."/>
 <meta name="application-name" content="Ittosei Blog">
 <meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/namesilo-ddns/" /><link rel="next" href="http://ittosei.com/posts/pivpn/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-security-cam-1/" /><link rel="prev" href="http://ittosei.com/posts/discourse/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Python Script for Namesilo DDNS",
+        "headline": " Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/ittosei.com\/posts\/namesilo-ddns\/"
-        },"genre": "posts","keywords": "DDNS, Python, Namesilo","wordcount":  77 ,
-        "url": "http:\/\/ittosei.com\/posts\/namesilo-ddns\/","datePublished": "2020-06-07T19:09:00-04:00","dateModified": "2020-06-07T19:09:00-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "http:\/\/ittosei.com\/posts\/pi-security-cam-1\/"
+        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Security-Camera","wordcount":  425 ,
+        "url": "http:\/\/ittosei.com\/posts\/pi-security-cam-1\/","datePublished": "2020-08-02T22:06:06-04:00","dateModified": "2020-08-02T22:06:06-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "5M1Sec"},"author": {
                 "@type": "Person",
                 "name": "5M1Sec"
-            },"description": "Alternative DDNS of NOIP"
+            },"description": ""
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -101,47 +101,62 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Python Script for Namesilo DDNS</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tools/"><i class="far fa-folder fa-fw"></i>Tools</a>&nbsp;<a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-07">2020-06-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;77 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animated flipInX"> Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]</h1><h2 class="single-subtitle">sss</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pi-security-cam-project/"><i class="far fa-folder fa-fw"></i>Pi Security Cam Project</a>&nbsp;<a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry Pi</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-02">2020-08-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;425 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>I set up the PIVPN for Raspberry Pi.
-I used <strong>NOIP</strong> for public DNS.
-I found it is quite annoying to click confirmation email from <strong>NOIP</strong> every month.
-I decided to setup a DDNS myself as an alternative of <strong>NOIP</strong>.<br>
-I used the Namesilo API to check if my local DNS has been updated, and update it with the Namesilo API.<br>
-The script can be found in this <a href="https://github.com/Kudoyafka/Namesilo-DDNS-Update" target="_blank" rel="noopener noreffer">repo</a>.<br>
-You can also look up this <a href="https://www.raspberrypi.org/documentation/linux/usage/cron.md" target="_blank" rel="noopener noreffer">page</a> for<code>crontab</code>usage.</p></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#hardwares">Hardwares</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the <a href="https://github.com/ccrisan/motioneyeos/wiki" target="_blank" rel="noopener noreffer">MotionEyeOS</a>. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera. So I want to keep it running Raspberry Pi OS (formerly known as Raspbian). FYI, there is also a Python library for the Pi camera, you can use it for your project. I will not rely on that. Reinventing the wheel is not useful, but I hope I will learn something from doing it.</p>
+<p>I like to plan things before actually doing it. Like a normal computer science project, the plan have to be scalable. My plan is using multiple cameras and sending the videos to the root server in-house. The root server can be attached to an additional storage with better cooling. The root server will also compute facial detention if the computation is possible in the Pi.</p>
+<h2 id="hardwares">Hardwares</h2>
+<ul>
+<li>Raspberry Pi Zero</li>
+</ul>
+<p>Raspberry Pi Zero is the cheaper model in the Pi family. I recommend Pi zero because it is sufficient for this usage. From inspecting <code>top</code>, Raspberry Pi Zero only has <strong>12%</strong> CPU usage while taking video and encoding it.</p>
+<p>Temperature wise, I put the Pi Zero under <strong>33°C (91.4°F)</strong> on a partial cloudy day. Being directed heated from sunshine for a while, the highest core temperature was <strong>77°C</strong>. I think it works for me.</p>
+<p>I found this <a href="https://www.amazon.com/Vilros-Raspberry-Starter-Power-Premium/dp/B0748MPQT4/" target="_blank" rel="noopener noreffer">Vilros Raspberry Pi Zero combo</a> very promising. You probably will need to upgrade the power source and longer cable for the security camera usage. You can also look for the other combos, but looking the one with <strong>w</strong>, it stands for the wireless.</p>
+<ul>
+<li>Pi Camera</li>
+</ul>
+<p>I recommend buying the first generation camera, which is under $10. The second generation is about $30, the newer HQ one is $50. I think the first generation camera is capable enough for the security camera usage. Please do note that the ribbon cable is different for the regular Pi and Pi zero. My purchase had the Pi zero ribbon cable included.
+I bough this <a href="https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4" target="_blank" rel="noopener noreffer">one</a></p>
+<ul>
+<li>My Root Server</li>
+</ul>
+<p>I used my previous Pi 4 as a root server. Hope it can also handle facial detention computation. It seems struggle with it. I am still optimizing the code for the facial detention.</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-06-07</span>
+                <span>Updated on 2020-08-02</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/namesilo-ddns/" data-title="Python Script for Namesilo DDNS" data-hashtags="DDNS,Python,Namesilo"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/namesilo-ddns/" data-title="Python Script for Namesilo DDNS"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-security-cam-1/" data-title=" Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]" data-hashtags="Raspberry-Pi,Pi-Camera,Security-Camera"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-security-cam-1/" data-title=" Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]"><i class="fab fa-hacker-news fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ddns/">DDNS</a>,&nbsp;<a href="/tags/python/">Python</a>,&nbsp;<a href="/tags/namesilo/">Namesilo</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/raspberry-pi/">Raspberry-Pi</a>,&nbsp;<a href="/tags/pi-camera/">Pi-Camera</a>,&nbsp;<a href="/tags/security-camera/">Security-Camera</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/posts/pivpn/" class="next" rel="next" title="Setting Up Wireguard VPN in Raspberry Pi">Setting Up Wireguard VPN in Raspberry Pi<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/discourse/" class="prev" rel="prev" title="Forum Framework Recommendation: Discourse"><i class="fas fa-angle-left fa-fw"></i>Forum Framework Recommendation: Discourse</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

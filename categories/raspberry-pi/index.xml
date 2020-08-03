@@ -1,9 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Raspberry-Pi - Category - Ittosei Blog</title>
+        <title>Raspberry Pi - Category - Ittosei Blog</title>
         <link>http://ittosei.com/categories/raspberry-pi/</link>
-        <description>Raspberry-Pi - Category - Ittosei Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Jun 2020 11:33:09 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/raspberry-pi/" rel="self" type="application/rss+xml" /><item>
+        <description>Raspberry Pi - Category - Ittosei Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Aug 2020 22:06:06 -0400</lastBuildDate><atom:link href="http://ittosei.com/categories/raspberry-pi/" rel="self" type="application/rss+xml" /><item>
+    <title> Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]</title>
+    <link>http://ittosei.com/posts/pi-security-cam-1/</link>
+    <pubDate>Sun, 02 Aug 2020 22:06:06 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/pi-security-cam-1/</guid>
+    <description><![CDATA[I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the MotionEyeOS. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera.]]></description>
+</item><item>
     <title>Raspberry Pi Camera Module Documentation</title>
     <link>http://ittosei.com/posts/pi-cam-doc/</link>
     <pubDate>Sun, 14 Jun 2020 11:33:09 -0400</pubDate>
