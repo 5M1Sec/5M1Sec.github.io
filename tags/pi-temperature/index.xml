@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Pi-Temperature - Tag - Ittosei Blog</title>
+        <link>http://ittosei.com/tags/pi-temperature/</link>
+        <description>Pi-Temperature - Tag - Ittosei Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 07 Aug 2020 16:02:29 -0400</lastBuildDate><atom:link href="http://ittosei.com/tags/pi-temperature/" rel="self" type="application/rss+xml" /><item>
+    <title>Simple Bash Script for Monitoring Raspberry Pi Temperature</title>
+    <link>http://ittosei.com/posts/pi-temp/</link>
+    <pubDate>Fri, 07 Aug 2020 16:02:29 -0400</pubDate>
+    <author>Author</author>
+    <guid>http://ittosei.com/posts/pi-temp/</guid>
+    <description><![CDATA[The following script will monitor Raspberry Pi temperature.
+#!/bin/bash while [ : ] do command=`/opt/vc/bin/vcgencmd measure_temp` echo $command sleep 3 done The script will print the temperature every 3 seconds.
+You can run vcgencmd measure_temp for one temperature check.
+Change sleep 3 to other number for different intervals.]]></description>
+</item></channel>
+</rss>

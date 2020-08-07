@@ -2,17 +2,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://ittosei.com/categories/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/categories/computer-science/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/categories/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/categories/computer-science/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/tags/pi-temperature/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/posts/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/categories/raspberry-pi/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/tags/raspberry-pi/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/posts/pi-temp/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://ittosei.com/tags/</loc><lastmod>2020-08-07T16:02:29-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/categories/pi-security-cam-project/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/tags/pi-camera/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/posts/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/categories/raspberry-pi/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/posts/pi-secruity-cam-2/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/tags/raspberry-pi/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/tags/security-camera/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://ittosei.com/tags/</loc><lastmod>2020-08-06T17:26:37-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/posts/pi-security-cam-1/</loc><lastmod>2020-08-02T22:06:06-04:00</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
             <loc>http://ittosei.com/tags/discourse/</loc><lastmod>2020-07-22T05:17:48-04:00</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url><url>
             <loc>http://ittosei.com/tags/form/</loc><lastmod>2020-07-22T05:17:48-04:00</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url><url>
