@@ -112,11 +112,18 @@ Go to the official website to download the Raspbian OS. You will download an ima
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="setting-up-pi">Setting up Pi</h1>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-up-pi">Setting up Pi</a></li>
+    <li><a href="#connecting-pi-camera-module">Connecting Pi Camera Module</a></li>
+    <li><a href="#enable-camera-module-in-pi">Enable Camera Module in Pi</a></li>
+    <li><a href="#test-camera">Test Camera</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="setting-up-pi">Setting up Pi</h2>
 <p>There are already many guide for this. I will briefly introduce the procedure here. Please look for other guide for troubleshooting.</p>
 <p>Go to the <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener noreffer">official website</a> to download the Raspbian OS. You will download an imager burner. Connect your Pi to your PC via usb. Flash the image to your Pi. If you are doing headless setup. You will need to enable SSH in a config file. Please refer to other guide.</p>
-<h1 id="connecting-pi-camera-module">Connecting Pi Camera Module</h1>
+<h2 id="connecting-pi-camera-module">Connecting Pi Camera Module</h2>
 <p>You need to carefully pull out the black bar at the connector so the ribbon can be inserted.</p>
 <p>Connect the Pi camera module as the following orientation:</p>
 <a class="lightgallery" href="/images/pi-cam/pi-cam-connect-1600.jpg" title="/images/pi-cam/pi-cam-connect-1600.jpg" data-thumbnail="/images/pi-cam/pi-cam-connect-1600.jpg">
@@ -129,7 +136,7 @@ Go to the official website to download the Raspbian OS. You will download an ima
             alt="/images/pi-cam/pi-cam-connect-1600.jpg" />
     </a>
 <p>The ribbon is straight across the two connector. The black side of the ribbon will face the same side of the back of camera.</p>
-<h1 id="enable-camera-module-in-pi">Enable Camera Module in Pi</h1>
+<h2 id="enable-camera-module-in-pi">Enable Camera Module in Pi</h2>
 <p>Run <code>sudo raspi-config</code> in the Terminal.</p>
 <p>Use arrow key to navigate, and enter to confirm.</p>
 <p>Select <code>Interfacing Options</code></p>
@@ -138,7 +145,7 @@ Go to the official website to download the Raspbian OS. You will download an ima
 <p>Then you will prompt to reboot.</p>
 <p><strong>If you do this procedure before connecting the camera. You will need to reboot after connecting the camera.</strong></p>
 <p>Run <code>sudo reboot</code> if you are unfamiliar with the terminal.</p>
-<h1 id="test-camera">Test Camera</h1>
+<h2 id="test-camera">Test Camera</h2>
 <p>Run <code>raspistill -v -o out.jpg</code> in the Terminal.</p>
 <p>Inspect if there is any error in the output.</p>
 <p>You can check by running <code>ls</code> to see if there is a <code>out.jpg</code> file.</p>
