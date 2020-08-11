@@ -5,35 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Simple Bash Script for Monitoring Raspberry Pi Temperature - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Simple Bash Script for Monitoring Raspberry Pi Temperature" />
-<meta property="og:description" content="The following script will monitor Raspberry Pi temperature.
-#!/bin/bash while [ : ] do command=`/opt/vc/bin/vcgencmd measure_temp` echo $command sleep 3 done The script will print the temperature every 3 seconds.
-You can run vcgencmd measure_temp for one temperature check.
-Change sleep 3 to other number for different intervals." />
+        <title>Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2] - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]" />
+<meta property="og:description" content="Setting up Pi There are already many guide for this. I will briefly introduce the procedure here. Please look for other guide for troubleshooting.
+Go to the official website to download the Raspbian OS. You will download an imager burner. Connect your Pi to your PC via usb. Flash the image to your Pi. If you are doing headless setup. You will need to enable SSH in a config file. Please refer to other guide." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ittosei.com/posts/pi-temp/" />
-<meta property="article:published_time" content="2020-08-07T16:02:29-04:00" />
-<meta property="article:modified_time" content="2020-08-07T16:02:29-04:00" />
+<meta property="og:url" content="http://ittosei.com/posts/pi-security-cam-2/" />
+<meta property="article:published_time" content="2020-08-06T17:26:37-04:00" />
+<meta property="article:modified_time" content="2020-08-06T17:26:37-04:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Simple Bash Script for Monitoring Raspberry Pi Temperature"/>
-<meta name="twitter:description" content="The following script will monitor Raspberry Pi temperature.
-#!/bin/bash while [ : ] do command=`/opt/vc/bin/vcgencmd measure_temp` echo $command sleep 3 done The script will print the temperature every 3 seconds.
-You can run vcgencmd measure_temp for one temperature check.
-Change sleep 3 to other number for different intervals."/>
+<meta name="twitter:title" content="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]"/>
+<meta name="twitter:description" content="Setting up Pi There are already many guide for this. I will briefly introduce the procedure here. Please look for other guide for troubleshooting.
+Go to the official website to download the Raspbian OS. You will download an imager burner. Connect your Pi to your PC via usb. Flash the image to your Pi. If you are doing headless setup. You will need to enable SSH in a config file. Please refer to other guide."/>
 <meta name="application-name" content="Ittosei Blog">
 <meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-temp/" /><link rel="prev" href="http://ittosei.com/posts/pi-security-cam-2/" /><link rel="next" href="http://ittosei.com/posts/pi-security-cam-3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-security-cam-2/" /><link rel="prev" href="http://ittosei.com/posts/pi-security-cam-1/" /><link rel="next" href="http://ittosei.com/posts/pi-temp/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Simple Bash Script for Monitoring Raspberry Pi Temperature",
+        "headline": "Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/ittosei.com\/posts\/pi-temp\/"
-        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Temperature","wordcount":  48 ,
-        "url": "http:\/\/ittosei.com\/posts\/pi-temp\/","datePublished": "2020-08-07T16:02:29-04:00","dateModified": "2020-08-07T16:02:29-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "http:\/\/ittosei.com\/posts\/pi-security-cam-2\/"
+        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Security-Camera","wordcount":  224 ,
+        "url": "http:\/\/ittosei.com\/posts\/pi-security-cam-2\/","datePublished": "2020-08-06T17:26:37-04:00","dateModified": "2020-08-06T17:26:37-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "5M1Sec"},"author": {
                 "@type": "Person",
@@ -107,53 +103,77 @@ Change sleep 3 to other number for different intervals."/>
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Simple Bash Script for Monitoring Raspberry Pi Temperature</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry Pi</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-07">2020-08-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;48 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pi-security-cam-project/"><i class="far fa-folder fa-fw"></i>Pi Security Cam Project</a>&nbsp;<a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry Pi</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-06">2020-08-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;224 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>The following script will monitor Raspberry Pi temperature.</p>
-<pre><code>#!/bin/bash
-while [ : ]
-do
-        command=`/opt/vc/bin/vcgencmd measure_temp`
-        echo $command
-        sleep 3
-done
-</code></pre><p>The script will print the temperature every 3 seconds.</p>
-<p>You can run
-<code>vcgencmd measure_temp</code> for one temperature check.</p>
-<p>Change <code>sleep 3</code> to other number for different intervals.</p>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setting-up-pi">Setting up Pi</a></li>
+    <li><a href="#connecting-pi-camera-module">Connecting Pi Camera Module</a></li>
+    <li><a href="#enable-camera-module-in-pi">Enable Camera Module in Pi</a></li>
+    <li><a href="#test-camera">Test Camera</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="setting-up-pi">Setting up Pi</h2>
+<p>There are already many guide for this. I will briefly introduce the procedure here. Please look for other guide for troubleshooting.</p>
+<p>Go to the <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener noreffer">official website</a> to download the Raspbian OS. You will download an imager burner. Connect your Pi to your PC via usb. Flash the image to your Pi. If you are doing headless setup. You will need to enable SSH in a config file. Please refer to other guide.</p>
+<h2 id="connecting-pi-camera-module">Connecting Pi Camera Module</h2>
+<p>You need to carefully pull out the black bar at the connector so the ribbon can be inserted.</p>
+<p>Connect the Pi camera module as the following orientation:</p>
+<a class="lightgallery" href="/images/pi-cam/pi-cam-connect-1600.jpg" title="/images/pi-cam/pi-cam-connect-1600.jpg" data-thumbnail="/images/pi-cam/pi-cam-connect-1600.jpg">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/pi-cam/pi-cam-connect-1600.jpg"
+            data-srcset="/images/pi-cam/pi-cam-connect-1600.jpg, /images/pi-cam/pi-cam-connect-1600.jpg 1.5x, /images/pi-cam/pi-cam-connect-1600.jpg 2x"
+            data-sizes="auto"
+            alt="/images/pi-cam/pi-cam-connect-1600.jpg" />
+    </a>
+<p>The ribbon is straight across the two connector. The black side of the ribbon will face the same side of the back of camera.</p>
+<h2 id="enable-camera-module-in-pi">Enable Camera Module in Pi</h2>
+<p>Run <code>sudo raspi-config</code> in the Terminal.</p>
+<p>Use arrow key to navigate, and enter to confirm.</p>
+<p>Select <code>Interfacing Options</code></p>
+<p>Select <code>Camera</code></p>
+<p>Choose <code>Ok</code></p>
+<p>Then you will prompt to reboot.</p>
+<p><strong>If you do this procedure before connecting the camera. You will need to reboot after connecting the camera.</strong></p>
+<p>Run <code>sudo reboot</code> if you are unfamiliar with the terminal.</p>
+<h2 id="test-camera">Test Camera</h2>
+<p>Run <code>raspistill -v -o out.jpg</code> in the Terminal.</p>
+<p>Inspect if there is any error in the output.</p>
+<p>You can check by running <code>ls</code> to see if there is a <code>out.jpg</code> file.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-08-07</span>
+                <span>Updated on 2020-08-06</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-temp/" data-title="Simple Bash Script for Monitoring Raspberry Pi Temperature" data-hashtags="Raspberry-Pi,Pi-Temperature"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-temp/" data-title="Simple Bash Script for Monitoring Raspberry Pi Temperature"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-security-cam-2/" data-title="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]" data-hashtags="Raspberry-Pi,Pi-Camera,Security-Camera"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-security-cam-2/" data-title="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]"><i class="fab fa-hacker-news fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/raspberry-pi/">Raspberry-Pi</a>,&nbsp;<a href="/tags/pi-temperature/">Pi-Temperature</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/raspberry-pi/">Raspberry-Pi</a>,&nbsp;<a href="/tags/pi-camera/">Pi-Camera</a>,&nbsp;<a href="/tags/security-camera/">Security-Camera</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/pi-security-cam-2/" class="prev" rel="prev" title="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]"><i class="fas fa-angle-left fa-fw"></i>Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]</a>
-            <a href="/posts/pi-security-cam-3/" class="next" rel="next" title="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]">Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/pi-security-cam-1/" class="prev" rel="prev" title="Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]"><i class="fas fa-angle-left fa-fw"></i>Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]</a>
+            <a href="/posts/pi-temp/" class="next" rel="next" title="Simple Bash Script for Monitoring Raspberry Pi Temperature">Simple Bash Script for Monitoring Raspberry Pi Temperature<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

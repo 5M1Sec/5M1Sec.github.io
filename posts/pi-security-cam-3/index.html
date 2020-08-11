@@ -5,29 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1] - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]" />
-<meta property="og:description" content="I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the MotionEyeOS. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera." />
+        <title>Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3] - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]" />
+<meta property="og:description" content="This post will cover the basic function of the project, sending and receiving videos.
+I choose the official API for camera sending usage. My site also have a copy with a table of content that helps you navigate the content. It is a higher level implementation of OpenMAX. There is also a Python library for Pi camera that you can use.
+Save Video Locally Run raspivid --timeout 0 --bitrate 800000 --segment 10000 -v -a 4 -a %Y-%m-%d-%X --output video_%c." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://ittosei.com/posts/pi-security-cam-1/" />
-<meta property="article:published_time" content="2020-08-02T22:06:06-04:00" />
-<meta property="article:modified_time" content="2020-08-02T22:06:06-04:00" />
+<meta property="og:url" content="http://ittosei.com/posts/pi-security-cam-3/" />
+<meta property="article:published_time" content="2020-08-10T21:01:06-04:00" />
+<meta property="article:modified_time" content="2020-08-10T21:01:06-04:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]"/>
-<meta name="twitter:description" content="I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the MotionEyeOS. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera."/>
+<meta name="twitter:title" content="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]"/>
+<meta name="twitter:description" content="This post will cover the basic function of the project, sending and receiving videos.
+I choose the official API for camera sending usage. My site also have a copy with a table of content that helps you navigate the content. It is a higher level implementation of OpenMAX. There is also a Python library for Pi camera that you can use.
+Save Video Locally Run raspivid --timeout 0 --bitrate 800000 --segment 10000 -v -a 4 -a %Y-%m-%d-%X --output video_%c."/>
 <meta name="application-name" content="Ittosei Blog">
 <meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-security-cam-1/" /><link rel="prev" href="http://ittosei.com/posts/discourse/" /><link rel="next" href="http://ittosei.com/posts/pi-security-cam-2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-security-cam-3/" /><link rel="prev" href="http://ittosei.com/posts/pi-temp/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]",
+        "headline": "Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/ittosei.com\/posts\/pi-security-cam-1\/"
-        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Security-Camera","wordcount":  581 ,
-        "url": "http:\/\/ittosei.com\/posts\/pi-security-cam-1\/","datePublished": "2020-08-02T22:06:06-04:00","dateModified": "2020-08-02T22:06:06-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "http:\/\/ittosei.com\/posts\/pi-security-cam-3\/"
+        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Security-Camera","wordcount":  389 ,
+        "url": "http:\/\/ittosei.com\/posts\/pi-security-cam-3\/","datePublished": "2020-08-10T21:01:06-04:00","dateModified": "2020-08-10T21:01:06-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "5M1Sec"},"author": {
                 "@type": "Person",
@@ -101,10 +105,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pi-security-cam-project/"><i class="far fa-folder fa-fw"></i>Pi Security Cam Project</a>&nbsp;<a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry Pi</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-02">2020-08-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;581 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-10">2020-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;389 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -112,43 +116,64 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#hardwares">Hardwares</a></li>
+    <li><a href="#save-video-locally">Save Video Locally</a></li>
+    <li><a href="#receiving-video-from-another-machine">Receiving Video from Another Machine</a>
+      <ul>
+        <li><a href="#receiving">Receiving</a></li>
+        <li><a href="#sending-video">Sending Video</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>I wanted a security camera for a while. There are many reasons that I am insist building it. Of course, the primary reason is for fun. If you are looking for a complete product, there are some open source pi security projects built already. For example, the <a href="https://github.com/ccrisan/motioneyeos/wiki" target="_blank" rel="noopener noreffer">MotionEyeOS</a>. I personally have not installed it, but you can check out the YouTube for other people&rsquo;s review. I want my Pi run other tasks whiling serving as a security camera. So I want to keep it running Raspberry Pi OS (formerly known as Raspbian). FYI, there is also a Python library for the Pi camera, you can use it for your project. I will not rely on that. Reinventing the wheel is not useful, but I hope I will learn something from doing it.</p>
-<p>I like to plan things before actually doing it. Like a normal computer science project, the plan have to be scalable. My plan is using multiple cameras and sending the videos to the root server in-house. The root server can be attached to an additional storage with better cooling. The root server will also compute facial detention if the computation is possible in the Pi.</p>
-<h2 id="hardwares">Hardwares</h2>
+            </div><div class="content" id="content"><p>This post will cover the basic function of the project, sending and receiving videos.</p>
+<p>I choose the <a href="https://www.raspberrypi.org/documentation/raspbian/applications/camera.md" target="_blank" rel="noopener noreffer">official API</a> for camera sending usage. My site also have a <a href="https://ittosei.com/posts/pi-cam-doc/" target="_blank" rel="noopener noreffer">copy</a> with a table of content that helps you navigate the content. It is a higher level implementation of OpenMAX. There is also a Python library for Pi camera that you can use.</p>
+<h2 id="save-video-locally">Save Video Locally</h2>
+<p>Run <code>raspivid --timeout 0 --bitrate 800000 --segment 10000 -v -a 4 -a %Y-%m-%d-%X --output video_%c.h264</code> in the terminal of Pi.<br>
+<code>--timeout 0</code> : It will run the camera until a manually interruption.<br>
+<code>--bitrate 800000 </code>The bitrate is 0.8Mbits/s.<br>
+<code>--segment 10000</code> The video is broken into 10 seconds segment each.<br>
+<code>-v</code> You can see all information in the terminal.<br>
+<code>-a 4 -a %Y-%m-%d-%X </code> It will make a timestamp caption in the video.<br>
+<code> --output video_%c.h264</code> It will output to a timestamp file name.</p>
+<p>There are also many options to customize. You can check out the official documentation for more details.</p>
+<h2 id="receiving-video-from-another-machine">Receiving Video from Another Machine</h2>
+<h3 id="receiving">Receiving</h3>
+<script type="application/javascript" src="https://gist.github.com/5M1Sec/161ec1ded265ca8f6467d27f394093eb.js"></script>
+
+<p>The above code does the following things</p>
 <ul>
-<li>Raspberry Pi Zero</li>
+<li>Receive data via the port number on the top.</li>
+<li>Write the data into a file with current time in binary mode. The video duration can be adjusted at the top.</li>
+<li>Clean old videos in a given interval.</li>
 </ul>
-<p>Raspberry Pi Zero is the cheaper model in the Pi family. I recommend Pi zero because it is sufficient for this usage. From inspecting <code>top</code>, Raspberry Pi Zero only has <strong>12%</strong> CPU usage while taking video and encoding it.</p>
-<p>The essentials are Pi Zero, SD card, micro-usb cable and power adapter.</p>
-<p>Temperature wise, my kit came with a heatsink. I put the Pi Zero under <strong>33°C (91.4°F)</strong> on a partial cloudy day. Being directed heated from sunshine for a while, the highest core temperature was <strong>77°C</strong>. I think it works for me.</p>
-<p>I found this <a href="https://www.amazon.com/Vilros-Raspberry-Starter-Power-Premium/dp/B0748MPQT4/" target="_blank" rel="noopener noreffer">Vilros Raspberry Pi Zero combo</a> very promising. You probably will need to buy the standalone power adapter(like the one your phone is using) and longer cable for the security camera usage. You can also look for the other combos, but looking the one with <strong>w</strong>, it stands for the wireless.</p>
-<p>You will need to buy a separate SD card since this combo does not include one. I recommend <strong>16GB</strong> or up for the storage. The 16GB storage will provide you a greater flexibility. In case you want to transform it to anther project.</p>
-<p>This combo doesn&rsquo;t include HDMI cable, keyboard, mouse. If you do not have these, you will need to install it as headless(headless means no monitor output). The headless setup require you to use SSH method.  Do not frustrate if you do not what SSH is. The whole process is not difficult.</p>
-<ul>
-<li>Pi Camera</li>
-</ul>
-<p>I recommend buying the first generation camera, which is under $10. The second generation is about $30, the newer HQ one is $50. I think the first generation camera is capable enough for the security camera usage. Please do note that the ribbon cable is different for the regular Pi and Pi zero. My purchase had the Pi zero ribbon cable included.
-I bough this <a href="https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4" target="_blank" rel="noopener noreffer">one</a></p>
-<ul>
-<li>My Root Server (Optional)</li>
-</ul>
-<p>This is optional. You can save the video in the Pi Zero. However, if your Pi is stollen, your data will also be gone. It is doable if you want to use it for in-house application.
-I used my previous Pi 4 as a root server. Hope it can also handle facial detention computation. It seems struggle with it. I am still optimizing the code for the facial detention.</p>
+<p>You can check out the raw file and run <code>python pi_cam_server.py</code> to initial the server.</p>
+<h3 id="sending-video">Sending Video</h3>
+<p>When you run the server code, it will output your local IP address. The local IP address will be used.<br>
+You will also copy the port number from the server code. My code is 12345, you can change to other number you like. <strong>Note: port number 0 - 1024 are reserved for special usage</strong>.<br>
+Once the receiving code is running. Run the following commend in the terminal of Pi.<br>
+<code>raspivid  -t 0 --bitrate 100000 -n -v -o udp://YOUR-ADDRESS:PORT-NUMBER -ih -a 4 -a %Y-%m-%d-%X</code><br>
+The sending commend is the same as the one in saving locally. But the output file is now a UDP connection. Replace <code>YOUR-ADDRESS</code> to your address and your port number, e.g. <code>192.168.86.22:12345</code>.<br>
+There are also many options to customize. You can check out the official documentation for more details.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Argument <code>-ih</code> is needed since we are slicing video in the server side. Without adding headers, only the first video can be play by the media player.</div>
+        </div>
+    </div>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-08-02</span>
+                <span>Updated on 2020-08-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-security-cam-1/" data-title="Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]" data-hashtags="Raspberry-Pi,Pi-Camera,Security-Camera"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-security-cam-1/" data-title="Raspberry Pi Security Cam From Scratch: Motivation and Hardwares [Part 1]"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-security-cam-3/" data-title="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]" data-hashtags="Raspberry-Pi,Pi-Camera,Security-Camera"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-security-cam-3/" data-title="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]"><i class="fab fa-hacker-news fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -160,8 +185,7 @@ I used my previous Pi 4 as a root server. Hope it can also handle facial detenti
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/discourse/" class="prev" rel="prev" title="Forum Framework Recommendation: Discourse"><i class="fas fa-angle-left fa-fw"></i>Forum Framework Recommendation: Discourse</a>
-            <a href="/posts/pi-security-cam-2/" class="next" rel="next" title="Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]">Raspberry Pi Security Cam From Scratch: Setting Up Hardware and Software [Part 2]<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/pi-temp/" class="prev" rel="prev" title="Simple Bash Script for Monitoring Raspberry Pi Temperature"><i class="fas fa-angle-left fa-fw"></i>Simple Bash Script for Monitoring Raspberry Pi Temperature</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
