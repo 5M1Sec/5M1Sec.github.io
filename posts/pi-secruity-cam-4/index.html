@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4] - Ittosei Blog</title><meta name="Description" content="Sharing Curiosity"><meta property="og:title" content="Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]" />
+<meta property="og:description" content="In this part, I will attempt to add a facial detection function in my security camera. Because I notice that there exist a real time facial detection library online. The end result for now is not satisfied by any means. I will try to improve this in the future.
+Installing OpenCV Note  Install Python 3.5 for better compatibility.   Please be aware with the version of OpenCV. I installed the OpenCV 4 in Raspberry in July 2020." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ittosei.com/posts/pi-secruity-cam-4/" />
+<meta property="article:published_time" content="2020-08-15T21:18:47-04:00" />
+<meta property="article:modified_time" content="2020-08-15T21:18:47-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]"/>
+<meta name="twitter:description" content="In this part, I will attempt to add a facial detection function in my security camera. Because I notice that there exist a real time facial detection library online. The end result for now is not satisfied by any means. I will try to improve this in the future.
+Installing OpenCV Note  Install Python 3.5 for better compatibility.   Please be aware with the version of OpenCV. I installed the OpenCV 4 in Raspberry in July 2020."/>
+<meta name="application-name" content="Ittosei Blog">
+<meta name="apple-mobile-web-app-title" content="Ittosei Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://ittosei.com/posts/pi-secruity-cam-4/" /><link rel="prev" href="http://ittosei.com/posts/pi-security-cam-3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/ittosei.com\/posts\/pi-secruity-cam-4\/"
+        },"genre": "posts","keywords": "Raspberry-Pi, Pi-Camera, Security-Camera","wordcount":  856 ,
+        "url": "http:\/\/ittosei.com\/posts\/pi-secruity-cam-4\/","datePublished": "2020-08-15T21:18:47-04:00","dateModified": "2020-08-15T21:18:47-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "5M1Sec"},"author": {
+                "@type": "Person",
+                "name": "5M1Sec"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ittosei Blog">Ittosei Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ittosei Blog">Ittosei Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>5M1Sec</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pi-security-cam-project/"><i class="far fa-folder fa-fw"></i>Pi Security Cam Project</a>&nbsp;<a href="/categories/computer-science/"><i class="far fa-folder fa-fw"></i>Computer Science</a>&nbsp;<a href="/categories/raspberry-pi/"><i class="far fa-folder fa-fw"></i>Raspberry Pi</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-15">2020-08-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;856 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-opencv">Installing OpenCV</a></li>
+    <li><a href="#facial-detection-v1">Facial Detection V1</a></li>
+    <li><a href="#multithreading-optimization">Multithreading Optimization</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>In this part, I will attempt to add a facial detection function in my security camera.  Because I notice that there exist a real time facial detection library online. The end result for now is not satisfied by any means. I will try to improve this in the future.</p>
+<h2 id="installing-opencv">Installing OpenCV</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Install Python 3.5 for better compatibility.</div>
+        </div>
+    </div>
+<p>Please be aware with the version of OpenCV. I installed the <strong>OpenCV 4</strong> in Raspberry in July 2020. In 2020, there are already enormous outdated tutorials on installing OpenCV on Pi. I installed the OpenCV by following the tutorial of <a href="https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/" target="_blank" rel="noopener noreffer"><strong>LearnOpenCV</strong></a>. At the end of the article, you can even get a script when you subscribe to their newsletter.
+However, I still had two errors that I need to google around for the solution. It was about downgrading some libraries or re-install a library.</p>
+<h2 id="facial-detection-v1">Facial Detection V1</h2>
+<p>This is my first time experiencing the facial detection. This time, I try to comprehend it by gluing some code online. Where <code>07-28-2020-12-28-26.h264</code> is a 30 second, 2MB bitrate video file from the security camera. The <code>shape_predictor_68_face_landmarks.dat</code> is a 100MB training file that I got from a repository.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+
+<span class="c1"># Load the detector</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+
+<span class="c1"># Load the predictor</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s2">&#34;shape_predictor_68_face_landmarks.dat&#34;</span><span class="p">)</span>
+
+<span class="c1"># read the image</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;07-28-2020-12-28-26.h264&#39;</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="n">success_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">TIME_FORMAT</span> <span class="o">=</span> <span class="s2">&#34;%m-</span><span class="si">%d</span><span class="s2">-%Y-%H-%M-%S.h264&#34;</span>
+
+<span class="n">frame_passed</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">skip_time</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">fps</span>
+
+<span class="n">skip_frame</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+
+    <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">frame_passed</span> <span class="o">==</span> <span class="n">skip_time</span><span class="p">:</span>
+            <span class="n">frame_passed</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">frame_passed</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Convert image into grayscale</span>
+
+        <span class="k">if</span> <span class="n">frame_count</span> <span class="o">==</span> <span class="n">skip_frame</span><span class="p">:</span>
+
+            <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+
+        <span class="c1"># Use detector to find landmarks</span>
+            <span class="n">faces</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">left</span><span class="p">()</span>  <span class="c1"># left point</span>
+                <span class="n">y1</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">top</span><span class="p">()</span>  <span class="c1"># top point</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">right</span><span class="p">()</span>  <span class="c1"># right point</span>
+                <span class="n">y2</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">bottom</span><span class="p">()</span>  <span class="c1"># bottom point</span>
+
+            <span class="c1"># Create landmark object</span>
+                <span class="n">landmarks</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">gray</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="n">face</span><span class="p">)</span>
+
+            <span class="c1"># Loop through all the points</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">):</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">landmarks</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">x</span>
+                    <span class="n">y</span> <span class="o">=</span> <span class="n">landmarks</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">y</span>
+
+                <span class="c1"># Draw a circle</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&#34;frame</span><span class="si">%d</span><span class="s2">.jpg&#34;</span> <span class="o">%</span> <span class="n">count</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">success_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Success&#34;</span><span class="p">)</span>
+            <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># When everything done, release the video capture and video write objects</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+<span class="c1"># Close all windows</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div><p>The code reads frames and processing a facial detention on the frame. By reading all frames, I need <strong>10 minutes</strong> computation time, which is not acceptable for the real time computation.</p>
+<p>I did a quick improvement by skipping some frames and skipping some frames after finding one success detection.</p>
+<p>When skipping 30 frames, which is skipping every second, I got a <strong>25% hit rate</strong> for a success detection in a 30 seconds video. Even with the 30 FPS skipping, the computation time is still over a minute. It is not usable for a security camera.</p>
+<h2 id="multithreading-optimization">Multithreading Optimization</h2>
+<p>To improve computation time, I can utilize parallel computing. When inspecting <code>top</code>,  you can see the Pi only use one single process that utilize 100% of CPU. When you utilizing parallel computing, there will be multiple process that utilize 100% CPU. This is my attempt on optimization the performance.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">TimeoutError</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">frame_i</span><span class="p">):</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">frame_i</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+
+    <span class="c1"># Use detector to find landmarks</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="c1">#print(&#34;here&#34;)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&#34;frame</span><span class="si">%s</span><span class="s2">.jpg&#34;</span> <span class="o">%</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%H:%M:%S&#34;</span><span class="p">),</span> <span class="n">frame_i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Success&#34;</span><span class="p">)</span>
+
+    <span class="c1">#for face in faces:</span>
+    <span class="c1">#    x1 = face.left()  # left point</span>
+    <span class="c1">#    y1 = face.top()  # top point</span>
+    <span class="c1">#    x2 = face.right()  # right point</span>
+    <span class="c1">#    y2 = face.bottom()  # bottom point</span>
+
+     <span class="c1">#   # Create landmark object</span>
+     <span class="c1">#   landmarks = predictor(image=gray, box=face)</span>
+
+        <span class="c1"># Loop through all the points</span>
+<span class="c1">#        for n in range(0, 68):</span>
+ <span class="c1">#           x = landmarks.part(n).x</span>
+  <span class="c1">#          y = landmarks.part(n).y</span>
+
+        <span class="c1"># Draw a circle</span>
+   <span class="c1">#     cv2.circle(img=frame_i, center=(x, y), radius=3, color=(0, 255, 0), thickness=-1)</span>
+
+    <span class="c1">#    cv2.imwrite(&#34;frame%s.jpg&#34; % datetime.now().strftime(&#34;%H:%M:%S&#34;), frame_i)</span>
+     <span class="c1">#   print(&#34;Success&#34;)</span>
+
+
+<span class="n">SKIP_FRAME</span> <span class="o">=</span> <span class="mi">0</span>  
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># Load the detector</span>
+    <span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+
+    <span class="c1"># Load the predictor</span>
+    <span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s2">&#34;shape_predictor_68_face_landmarks.dat&#34;</span><span class="p">)</span>
+
+    <span class="c1"># read the image</span>
+    <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;07-28-2020-12-28-26.h264&#39;</span><span class="p">)</span>
+
+    <span class="n">TIME_FORMAT</span> <span class="o">=</span> <span class="s2">&#34;%m-</span><span class="si">%d</span><span class="s2">-%Y-%H-%M-%S.h264&#34;</span>
+    <span class="c1"># start 4 worker processes</span>
+    <span class="n">image_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">reading_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="n">SKIP_FRAME</span><span class="p">:</span>
+                <span class="n">image_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_list</span><span class="p">))</span>
+    <span class="n">reading_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">reading_time</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">reading_end</span><span class="p">))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;begin mutilprocessing&#34;</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">image_list</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;face detection time:&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">diff</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;total time:&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">diff</span><span class="o">+</span><span class="n">reading_end</span><span class="p">)))</span>
+    <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</code></pre></div><p>The performance of skipping every 30FPS is about 2x faster than the previous code. However, there are some problems with this code.</p>
+<ul>
+<li>The reading time consumed 27 second for a 30 second video. I need to parallelize the reading time.</li>
+<li>Currently, I save all reading frame to the memory buffer. The memory becomes an issue when loading larger video. I even can not load all frames from this 30 second video.</li>
+</ul>
+<p>After I systematic learn the facial detection, I will optimize this code.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-08-15</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://ittosei.com/posts/pi-secruity-cam-4/" data-title="Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]" data-hashtags="Raspberry-Pi,Pi-Camera,Security-Camera"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://ittosei.com/posts/pi-secruity-cam-4/" data-title="Raspberry Pi Security Cam From Scratch: Attempting Facial Detection and Performance Bottlenecking [Part 4]"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/raspberry-pi/">Raspberry-Pi</a>,&nbsp;<a href="/tags/pi-camera/">Pi-Camera</a>,&nbsp;<a href="/tags/security-camera/">Security-Camera</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/pi-security-cam-3/" class="prev" rel="prev" title="Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]"><i class="fas fa-angle-left fa-fw"></i>Raspberry Pi Security Cam From Scratch: Sending and Receiving Videos [Part 3]</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">5M1Sec</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://ittosei.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":100,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
